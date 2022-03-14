@@ -4,7 +4,7 @@ import SEO from 'components/SEO';
 const Page = () => {
   return (
     <>
-      <SEO />
+      <SEO title="Resume" />
       <MainTemplate />
     </>
   );
