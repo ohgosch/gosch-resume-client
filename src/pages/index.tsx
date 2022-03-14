@@ -1,11 +1,11 @@
-import MainTemplate from 'templates/Main';
+import ResumeTemplate from 'templates/Resume';
 import SEO from 'components/SEO';
 
 const Page = () => {
   return (
     <>
       <SEO title="Resume" />
-      <MainTemplate />
+      <ResumeTemplate />
     </>
   );
 };

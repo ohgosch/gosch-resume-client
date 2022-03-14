@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
       min-height: 100vh;
       background-color: ${theme.colors.white};
       color: ${theme.colors.black};
+      font-family: 'Rufina', serif;
     }
 
     * {
