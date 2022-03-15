@@ -81,11 +81,11 @@ export const Header = styled.header`
     gap: ${rem(8)};
   `)}
 
-    ${mobile(css`
+  ${mobile(css`
     gap: ${rem(4)};
   `)}
 
-    ${mobileTablet(css`
+  ${mobileTablet(css`
     order: 2;
   `)}
 `;
@@ -147,9 +147,10 @@ export const LogoWrapper = styled.div`
     position: relative;
     z-index: 10;
 
-    > svg,
-    > img {
-      max-width: 55%;
+    svg,
+    img {
+      width: 55%;
+      height: auto;
     }
 
     ${tabletDesktop(css`

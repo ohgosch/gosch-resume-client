@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { GlobalStyle } from 'visual/styles/GlobalStyle';
 import Header from 'components/Header';
 import theme from 'visual/theme';
+import Footer from 'components/Footer';
 
 type AppProps = {
   Component: React.ComponentType;
@@ -30,6 +31,7 @@ const App = ({ Component }: AppProps) => {
         <GlobalStyle />
         <Header />
         <Component />
+        <Footer />
       </ThemeProvider>
     </>
   );
