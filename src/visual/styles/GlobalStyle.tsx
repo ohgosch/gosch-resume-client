@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { notPrint, print } from 'visual/medias';
 import { rem } from 'polished';
+
+import { mobile, notPrint, print, tabletDesktop } from 'visual/medias';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -25,6 +26,20 @@ export const GlobalStyle = createGlobalStyle`
       ${print(css`
         font-size: ${rem(10)};
       `)}
+    }
+
+    body {
+      ${tabletDesktop(
+        css`
+          padding-bottom: ${rem(100)};
+        `,
+      )}
+
+      ${mobile(
+        css`
+          padding-bottom: ${rem(50)};
+        `,
+      )}
     }
 
     * {
