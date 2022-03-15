@@ -4,10 +4,8 @@ import Header from '.';
 
 describe('<Header />', () => {
   it('should render ...', () => {
-    const { container } = render(<Header />);
+    render(<Header />);
 
     expect(screen.getByRole('heading', { name: /Gosch/i })).toBeInTheDocument();
-
-    expect(container.firstChild).toMatchSnapshot();
   });
 });

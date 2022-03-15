@@ -42,3 +42,19 @@ export const desktop = (content: FlattenSimpleInterpolation) => {
     }
   `;
 };
+
+export const print = (content: FlattenSimpleInterpolation) => {
+  return css`
+    @media print {
+      ${content}
+    }
+  `;
+};
+
+export const notPrint = (content: FlattenSimpleInterpolation) => {
+  return css`
+    @media not print {
+      ${content}
+    }
+  `;
+};

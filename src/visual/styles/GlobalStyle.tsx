@@ -1,13 +1,30 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { notPrint, print } from 'visual/medias';
+import { rem } from 'polished';
 
 export const GlobalStyle = createGlobalStyle`
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  
   ${({ theme }) => css`
     body,
     html {
-      min-height: 100vh;
-      background-color: ${theme.colors.white};
       color: ${theme.colors.black};
       font-family: 'Rufina', serif;
+
+      ${notPrint(
+        css`
+          background-color: ${theme.colors.white};
+          min-height: 100vh;
+        `,
+      )}
+
+      ${print(css`
+        font-size: ${rem(10)};
+      `)}
     }
 
     * {

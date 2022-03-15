@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
 import { hideVisually, rem, size } from 'polished';
+import styled, { css } from 'styled-components';
 
-import { mobile, tabletDesktop } from 'visual/medias';
+import { mobile, print, tabletDesktop } from 'visual/medias';
 import Wrapper from 'visual/styles/Wrapper';
 
 const menuSizeTabletDesktop = 64;
@@ -11,6 +11,10 @@ export const Container = styled.header`
     background-color: ${theme.colors.primary};
 
     ${mobile(css`
+      border-bottom: ${rem(5)} solid ${theme.colors.secondary};
+    `)}
+
+    ${print(css`
       border-bottom: ${rem(5)} solid ${theme.colors.secondary};
     `)}
   `}
@@ -34,7 +38,7 @@ export const Content = styled(Wrapper)`
     min-height: ${rem(300)};
   `)}
 
-    #logo {
+  #logo {
     ${mobile(css`
       max-width: ${rem(300)};
     `)}
