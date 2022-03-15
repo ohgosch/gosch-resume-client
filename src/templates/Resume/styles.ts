@@ -18,8 +18,8 @@ export const Content = styled.div`
 
   ${mobile(
     css`
-      margin-top: ${rem(50)};
-      gap: ${rem(25)};
+      margin-top: ${rem(64)};
+      gap: ${rem(64)};
     `,
   )}
 `;

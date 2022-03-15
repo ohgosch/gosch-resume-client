@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 
 import CoverLetter from 'components/CoverLetter';
+import Experiences from 'components/Experiences';
 import Wrapper from 'visual/styles/Wrapper';
 import Section from 'components/Section';
 import Navbar from 'components/Navbar';
@@ -23,6 +24,11 @@ const ResumeTemplate = () => {
         <Section name={t('skills')} id="skills">
           <Wrapper middle>
             <Skills />
+          </Wrapper>
+        </Section>
+        <Section name={t('experiences')} id="experiences">
+          <Wrapper>
+            <Experiences />
           </Wrapper>
         </Section>
       </S.Content>

@@ -24,6 +24,26 @@ export const Heading1 = styled.h2`
   `}
 `;
 
+export const Heading2 = styled.h3`
+  ${({ theme }) => css`
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: ${theme.colors.primary};
+    cursor: default;
+
+    ${tabletDesktop(css`
+      font-size: ${rem(36)};
+      line-height: ${rem(44)};
+    `)}
+
+    ${mobile(css`
+      font-size: ${rem(24)};
+      line-height: ${rem(30)};
+    `)}
+  `}
+`;
+
 type ParagraphProps = {
   align?: 'left' | 'justify';
 };
