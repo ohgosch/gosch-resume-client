@@ -8,6 +8,7 @@ import Navbar from 'components/Navbar';
 import Skills from 'components/Skills';
 
 import * as S from './styles';
+import Courses from 'components/Courses';
 
 const ResumeTemplate = () => {
   const { t } = useTranslation();
@@ -29,6 +30,11 @@ const ResumeTemplate = () => {
         <Section name={t('experiences')} id="experiences">
           <Wrapper>
             <Experiences />
+          </Wrapper>
+        </Section>
+        <Section name={t('courses')} id="courses">
+          <Wrapper middle>
+            <Courses />
           </Wrapper>
         </Section>
       </S.Content>
