@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { rem } from 'polished';
 
-import { mobile, tabletDesktop } from 'visual/medias';
+import { mobile, print, tabletDesktop } from 'visual/medias';
 
 export const Heading1 = styled.h2`
   ${({ theme }) => css`
@@ -77,4 +77,8 @@ export const ParagraphStyle = css<ParagraphProps>`
 
 export const Paragraph = styled.p<ParagraphProps>`
   ${ParagraphStyle}
+
+  ${print(css`
+    font-size: ${rem(20)};
+  `)}
 `;
