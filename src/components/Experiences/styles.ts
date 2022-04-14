@@ -1,12 +1,14 @@
 import styled, { css } from 'styled-components';
+import { rem, size } from 'polished';
+
 import {
   desktop,
   mobile,
   mobileTablet,
+  print,
   tablet,
   tabletDesktop,
 } from 'visual/medias';
-import { rem, size } from 'polished';
 import { Paragraph } from 'visual/styles/Texts';
 
 export const Container = styled.div`
@@ -14,12 +16,12 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  ${tabletDesktop(css`
-    gap: ${rem(64)};
-  `)}
-
   ${mobile(css`
     gap: ${rem(36)};
+  `)}
+
+  ${tabletDesktop(css`
+    gap: ${rem(64)};
   `)}
 `;
 
@@ -47,6 +49,12 @@ export const Experience = styled.article`
       ${mobile(css`
         left: ${rem(64 / 2 - 2)};
       `)}
+      
+      ${print(
+        css`
+          left: calc(50% - ${rem(2)});
+        `,
+      )}
     }
 
     ${desktop(css`
@@ -98,6 +106,7 @@ export const Date = styled.span`
     font-weight: 700;
     color: ${theme.colors.primary};
     white-space: nowrap;
+    text-transform: lowercase;
 
     ${tabletDesktop(css`
       font-size: ${rem(24)};
@@ -137,8 +146,12 @@ export const Role = styled.span`
   `}
 `;
 
-export const LogoWrapper = styled.div`
-  ${({ theme }) => css`
+type LogoWrapperProps = {
+  small: boolean;
+};
+
+export const LogoWrapper = styled.div<LogoWrapperProps>`
+  ${({ theme, small }) => css`
     background-color: ${theme.colors.primary};
     border-radius: 100%;
     display: flex;
@@ -151,14 +164,24 @@ export const LogoWrapper = styled.div`
     img {
       width: 55%;
       height: auto;
+      border-radius: 100%;
+      filter: grayscale(100);
     }
 
     ${tabletDesktop(css`
-      ${size(rem(75))};
+      ${small ? size(rem(75 / 2)) : size(rem(75))}
+      ${small &&
+      css`
+        margin-left: ${rem(75 / 2 / 2)};
+      `}
     `)}
 
     ${mobile(css`
-      ${size(rem(64))};
+      ${small ? size(rem(64 / 2)) : size(rem(64))};
+      ${small &&
+      css`
+        margin-left: ${rem(64 / 2 / 2)};
+      `}
     `)}
   `}
 `;

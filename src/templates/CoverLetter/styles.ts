@@ -3,7 +3,7 @@ import { rem } from 'polished';
 
 import { mobile, tabletDesktop } from 'visual/medias';
 
-export const Container = styled.section``;
+export const Container = styled.article``;
 
 export const Content = styled.div`
   display: flex;

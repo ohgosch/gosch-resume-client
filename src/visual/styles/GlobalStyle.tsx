@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
       )}
 
       ${print(css`
-        font-size: ${rem(10)};
+        font-size: ${rem(12)};
       `)}
     }
 

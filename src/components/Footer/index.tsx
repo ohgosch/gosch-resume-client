@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <S.Container>
       <LogoSmall />
-      <S.Text>developed using Next.js and Strapi</S.Text>
+      <S.Text>developed using Next.js and Cosmic</S.Text>
     </S.Container>
   );
 };

@@ -15,64 +15,6 @@ export const Container = styled.div`
   `)}
 `;
 
-export const Course = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    position: relative;
-
-    :not(:last-child):after {
-      content: '';
-      display: block;
-      background-color: ${theme.colors.primary};
-      position: absolute;
-      top: 50%;
-      left: 0;
-
-      ${tabletDesktop(css`
-        width: ${rem(5)};
-        border-radius: ${rem(5)};
-        height: calc(50% + ${rem(36)});
-      `)}
-
-      ${mobile(css`
-        width: ${rem(3)};
-        border-radius: ${rem(3)};
-        height: calc(50% + ${rem(16)});
-      `)}
-    }
-
-    :not(:first-child):before {
-      content: '';
-      display: block;
-      background-color: ${theme.colors.primary};
-      position: absolute;
-      top: ${rem(-10)};
-      left: 0;
-      z-index: 1;
-
-      ${tabletDesktop(css`
-        width: ${rem(5)};
-        height: calc(50% + ${rem(14)});
-        border-radius: ${rem(5)};
-      `)}
-
-      ${mobile(css`
-        width: ${rem(3)};
-        height: calc(50% + ${rem(13)});
-        border-radius: ${rem(3)};
-      `)}
-    }
-
-    ${tabletDesktop(css`
-      padding-left: ${rem(48)};
-    `)}
-
-    ${mobile(css`
-      padding-left: ${rem(36)};
-    `)}
-  `}
-`;
-
 export const CourseContent = styled.div`
   ${({ theme }) => css`
     display: grid;
@@ -153,6 +95,70 @@ export const CourseContent = styled.div`
   `}
 `;
 
+export const Course = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    position: relative;
+
+    :not(:last-child):after {
+      content: '';
+      display: block;
+      background-color: ${theme.colors.primary};
+      position: absolute;
+      top: 50%;
+      left: 0;
+
+      ${tabletDesktop(css`
+        width: ${rem(5)};
+        border-radius: ${rem(5)};
+        height: calc(50% + ${rem(36)});
+      `)}
+
+      ${mobile(css`
+        width: ${rem(3)};
+        border-radius: ${rem(3)};
+        height: calc(50% + ${rem(16)});
+      `)}
+    }
+
+    :not(:first-child):before {
+      content: '';
+      display: block;
+      background-color: ${theme.colors.primary};
+      position: absolute;
+      top: ${rem(-10)};
+      left: 0;
+      z-index: 1;
+
+      ${tabletDesktop(css`
+        width: ${rem(5)};
+        height: calc(50% + ${rem(14)});
+        border-radius: ${rem(5)};
+      `)}
+
+      ${mobile(css`
+        width: ${rem(3)};
+        height: calc(50% + ${rem(13)});
+        border-radius: ${rem(3)};
+      `)}
+    }
+
+    :last-child:first-child ${CourseContent} {
+      :before {
+        display: none;
+      }
+    }
+
+    ${tabletDesktop(css`
+      padding-left: ${rem(48)};
+    `)}
+
+    ${mobile(css`
+      padding-left: ${rem(36)};
+    `)}
+  `}
+`;
+
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-style: normal;
@@ -186,8 +192,8 @@ export const Subtitle = styled.span`
     `)}
 
     ${mobile(css`
-      font-size: ${rem(16)};
-      line-height: ${rem(20)};
+      font-size: ${rem(14)};
+      line-height: ${rem(18)};
     `)}
   `}
 `;
@@ -197,6 +203,7 @@ export const Date = styled.span`
     font-style: normal;
     font-weight: 700;
     color: ${theme.colors.black};
+    text-transform: lowercase;
 
     ${tabletDesktop(css`
       font-size: ${rem(18)};

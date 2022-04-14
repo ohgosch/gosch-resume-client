@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { rem, rgba } from 'polished';
 
-import { mobile, tabletDesktop } from 'visual/medias';
+import { mobile, print, tabletDesktop } from 'visual/medias';
 
 export const Container = styled.footer`
   display: flex;
@@ -47,6 +47,10 @@ export const Text = styled.p`
     ${mobile(css`
       font-size: ${rem(14)};
       line-height: ${rem(17)};
+    `)}
+
+    ${print(css`
+      display: none;
     `)}
   `}
 `;

@@ -55,7 +55,7 @@ const modifiers = {
     `,
 };
 
-export const Paragraph = styled.p<ParagraphProps>`
+export const ParagraphStyle = css<ParagraphProps>`
   ${({ theme, align }) => css`
     font-style: normal;
     font-weight: 400;
@@ -73,4 +73,8 @@ export const Paragraph = styled.p<ParagraphProps>`
     
     ${modifiers.align({ align })}
   `}
+`;
+
+export const Paragraph = styled.p<ParagraphProps>`
+  ${ParagraphStyle}
 `;

@@ -1,31 +1,18 @@
 import { Chip } from 'visual/styles/Chip';
+import { SkillResponse } from 'types/Api';
 
 import * as S from './styles';
 
-const Skills = () => {
-  const skills = [
-    'TypeScript',
-    'Accessibility',
-    'React',
-    'Next.js',
-    'Redux',
-    'Styled Components',
-    'i18n',
-    'SASS',
-    'Gatsby',
-    'Git',
-    'VueJS',
-    'SEO',
-    'Figma',
-    'Jest',
-    'Svelte',
-  ];
+type SkillsData = {
+  data: SkillResponse[];
+};
 
+const Skills = ({ data }: SkillsData) => {
   return (
     <S.Container>
-      {skills.map((skill) => (
-        <Chip as="li" key={skill}>
-          {skill}
+      {data.map(({ id, title }) => (
+        <Chip as="li" key={id}>
+          {title}
         </Chip>
       ))}
     </S.Container>

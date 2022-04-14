@@ -1,17 +1,13 @@
 import { ThemeProvider } from 'styled-components';
 import { appWithTranslation } from 'next-i18next';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import { GlobalStyle } from 'visual/styles/GlobalStyle';
-import Header from 'components/Header';
-import theme from 'visual/theme';
 import Footer from 'components/Footer';
+import theme from 'visual/theme';
 
-type AppProps = {
-  Component: React.ComponentType;
-};
-
-const App = ({ Component }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
@@ -29,8 +25,7 @@ const App = ({ Component }: AppProps) => {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header />
-        <Component />
+        <Component {...pageProps} />
         <Footer />
       </ThemeProvider>
     </>

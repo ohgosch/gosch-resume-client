@@ -3,7 +3,8 @@ import { rem } from 'polished';
 
 export const mobile = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (max-width: ${({ theme }) => rem(theme.resolutions.mobile.max)}) {
+    @media only screen and (max-width: ${({ theme }) =>
+        rem(theme.resolutions.mobile.max)}) {
       ${content}
     }
   `;
@@ -11,7 +12,8 @@ export const mobile = (content: FlattenSimpleInterpolation) => {
 
 export const mobileTablet = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (max-width: ${({ theme }) => rem(theme.resolutions.tablet.max)}) {
+    @media only screen and (max-width: ${({ theme }) =>
+        rem(theme.resolutions.tablet.max)}) {
       ${content}
     }
   `;
@@ -19,7 +21,8 @@ export const mobileTablet = (content: FlattenSimpleInterpolation) => {
 
 export const tablet = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (min-width: ${({ theme }) =>
+    @media print,
+      (min-width: ${({ theme }) =>
         rem(theme.resolutions.tablet.min)}) and (max-width: ${({ theme }) =>
         rem(theme.resolutions.tablet.max)}) {
       ${content}
@@ -29,7 +32,8 @@ export const tablet = (content: FlattenSimpleInterpolation) => {
 
 export const tabletDesktop = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (min-width: ${({ theme }) => rem(theme.resolutions.tablet.min)}) {
+    @media print,
+      (min-width: ${({ theme }) => rem(theme.resolutions.tablet.min)}) {
       ${content}
     }
   `;
@@ -37,7 +41,8 @@ export const tabletDesktop = (content: FlattenSimpleInterpolation) => {
 
 export const desktop = (content: FlattenSimpleInterpolation) => {
   return css`
-    @media (min-width: ${({ theme }) => rem(theme.resolutions.desktop.min)}) {
+    @media print,
+      (min-width: ${({ theme }) => rem(theme.resolutions.desktop.min)}) {
       ${content}
     }
   `;

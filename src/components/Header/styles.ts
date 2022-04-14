@@ -3,11 +3,14 @@ import styled, { css } from 'styled-components';
 
 import { mobile, print, tabletDesktop } from 'visual/medias';
 import Wrapper from 'visual/styles/Wrapper';
+import { HeaderProps } from 'components/Header/index';
 
 const menuSizeTabletDesktop = 64;
 
-export const Container = styled.header`
-  ${({ theme }) => css`
+type ContainerProps = Pick<HeaderProps, 'forceBorder'>;
+
+export const Container = styled.header<ContainerProps>`
+  ${({ theme, forceBorder }) => css`
     background-color: ${theme.colors.primary};
 
     ${mobile(css`
@@ -17,6 +20,11 @@ export const Container = styled.header`
     ${print(css`
       border-bottom: ${rem(5)} solid ${theme.colors.secondary};
     `)}
+
+    ${forceBorder &&
+    css`
+      border-bottom: ${rem(5)} solid ${theme.colors.secondary};
+    `}
   `}
 `;
 
