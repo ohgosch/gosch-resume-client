@@ -10,8 +10,8 @@ type SkillsData = {
 const Skills = ({ data }: SkillsData) => {
   return (
     <S.Container>
-      {data.map(({ id, title }) => (
-        <Chip as="li" key={id}>
+      {data.map(({ title }) => (
+        <Chip as="li" key={title}>
           {title}
         </Chip>
       ))}

@@ -8,19 +8,16 @@ describe('<Header />', () => {
       {
         url: 'http://linked-in.com',
         display: 'Linked-in',
-        id: 0,
         slug: 'linkedin',
       },
       {
         url: 'http://linked-in.com',
         display: 'GitHub',
-        id: 0,
         slug: 'github',
       },
       {
         url: 'http://linked-in.com',
         display: 'WhatsApp',
-        id: 0,
         slug: 'whatsapp',
       },
     ],
