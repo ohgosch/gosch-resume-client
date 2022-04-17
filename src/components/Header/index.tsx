@@ -1,9 +1,11 @@
 import { useTranslation } from 'next-i18next';
+import { useMemo } from 'react';
 
 import WhatsAppIcon from 'public/assets/img/icon/whatsapp.svg';
 import LinkedInIcon from 'public/assets/img/icon/linkedin.svg';
 import GitHubIcon from 'public/assets/img/icon/github.svg';
 import PrintIcon from 'public/assets/img/icon/print.svg';
+import SoundIcon from 'public/assets/img/icon/sound.svg';
 import Logo from 'public/assets/img/logo.svg';
 
 import { SocialMedia } from 'types/Api';
@@ -21,6 +23,11 @@ const Header = ({ forceBorder, data }: HeaderProps) => {
   const linkedinData = data.find((item) => item.slug === 'linkedin');
   const githubData = data.find((item) => item.slug === 'github');
   const whatsappData = data.find((item) => item.slug === 'whatsapp');
+  const audioPlayer = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return window?.document?.getElementById('player');
+    }
+  }, []) as HTMLAudioElement;
 
   return (
     <S.Container forceBorder={forceBorder}>
@@ -77,8 +84,17 @@ const Header = ({ forceBorder, data }: HeaderProps) => {
         <S.Infos>
           <S.Info onClick={() => window.print()} hideInMobile>
             <PrintIcon />
-            Print
+            {t('print')}
           </S.Info>
+          {!!audioPlayer && (
+            <S.Info onClick={() => audioPlayer?.play()}>
+              <SoundIcon />
+              {t('listen-my-name')}
+            </S.Info>
+          )}
+          <S.Player id="player">
+            <source src="/assets/audio/gosch.mp3" type="audio/mpeg" />
+          </S.Player>
         </S.Infos>
       </S.Content>
     </S.Container>

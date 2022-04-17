@@ -93,15 +93,14 @@ export const LogoWrapper = styled.div`
 export const Infos = styled.div`
   grid-area: infos;
   display: flex;
-  flex-direction: column;
   gap: ${rem(16)};
-  justify-content: end;
+  align-items: end;
 
   ${mobile(css`
     height: ${rem(36)};
     margin-bottom: ${rem(24)};
-    justify-content: center;
-    align-items: end;
+    justify-content: end;
+    align-items: center;
   `)}
 
   ${print(css`
@@ -229,3 +228,5 @@ export const MenuItemText = styled.a`
     `)}
   `}
 `;
+
+export const Player = styled.audio(hideVisually);
