@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import WhatsAppIcon from 'public/assets/img/icon/whatsapp.svg';
 import LinkedInIcon from 'public/assets/img/icon/linkedin.svg';
 import GitHubIcon from 'public/assets/img/icon/github.svg';
+import PrintIcon from 'public/assets/img/icon/print.svg';
 import Logo from 'public/assets/img/logo.svg';
 
 import { SocialMedia } from 'types/Api';
@@ -25,7 +26,10 @@ const Header = ({ forceBorder, data }: HeaderProps) => {
     <S.Container forceBorder={forceBorder}>
       <S.Title>{t('name', { ns: 'common' })}</S.Title>
       <S.Content>
-        <Logo id="logo" aria-label={t('logo-alt')} />
+        <S.LogoWrapper>
+          <Logo id="logo" aria-label={t('logo-alt')} />
+        </S.LogoWrapper>
+
         <S.Menu aria-label={t('social-media')}>
           {!!linkedinData && (
             <S.MenuItem aria-label="Linked-in">
@@ -70,6 +74,12 @@ const Header = ({ forceBorder, data }: HeaderProps) => {
             </S.MenuItem>
           )}
         </S.Menu>
+        <S.Infos>
+          <S.Info onClick={() => window.print()} hideInMobile>
+            <PrintIcon />
+            Print
+          </S.Info>
+        </S.Infos>
       </S.Content>
     </S.Container>
   );
