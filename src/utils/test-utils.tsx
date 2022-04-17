@@ -12,7 +12,7 @@ import theme from 'visual/theme';
 i18n.use(initReactI18next).init({
   lng: 'en',
   debug: false,
-  ns: ['common', 'header'],
+  ns: ['common', 'header', 'footer'],
   defaultNS: 'common',
   resources: {
     en: {
