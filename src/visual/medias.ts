@@ -30,10 +30,15 @@ export const tablet = (content: FlattenSimpleInterpolation) => {
   `;
 };
 
-export const tabletDesktop = (content: FlattenSimpleInterpolation) => {
+export const tabletDesktop = (
+  content: FlattenSimpleInterpolation,
+  excludePrint = false,
+) => {
   return css`
-    @media print,
-      (min-width: ${({ theme }) => rem(theme.resolutions.tablet.min)}) {
+    @media ${excludePrint
+        ? 'screen, (not print) and'
+        : 'print,'} (min-width: ${({ theme }) =>
+        rem(theme.resolutions.tablet.min)}) {
       ${content}
     }
   `;

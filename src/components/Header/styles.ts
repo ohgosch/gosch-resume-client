@@ -2,8 +2,8 @@ import { hideVisually, rem, size } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { mobile, print, tabletDesktop } from 'visual/medias';
-import Wrapper from 'visual/styles/Wrapper';
 import { HeaderProps } from 'components/Header/index';
+import Wrapper from 'visual/styles/Wrapper';
 
 const menuSizeTabletDesktop = 64;
 
@@ -29,21 +29,27 @@ export const Container = styled.header<ContainerProps>`
 `;
 
 export const Title = styled.h1`
-  ${hideVisually()}
+  ${hideVisually()};
 `;
 
 export const Content = styled(Wrapper)`
   position: relative;
-  display: flex;
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
 
   ${tabletDesktop(css`
-    justify-content: space-between;
+    grid-template-areas: 'logo menu' 'infos menu';
   `)}
 
   ${mobile(css`
-    flex-direction: column;
-    justify-content: center;
     min-height: ${rem(300)};
+    grid-template-areas: 'logo logo' 'menu infos';
+    align-items: end;
+  `)}
+  
+  ${print(css`
+    grid-template-areas: 'logo menu';
   `)}
 
   #logo {
@@ -57,10 +63,89 @@ export const Content = styled(Wrapper)`
   }
 `;
 
+export const LogoWrapper = styled.div`
+  grid-area: logo;
+
+  ${tabletDesktop(
+    css`
+      display: flex;
+      align-items: end;
+      height: 100%;
+    `,
+    true,
+  )}
+
+  ${mobile(css`
+    width: 100%;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: ${rem(-72)};
+  `)}
+  
+  ${print(css`
+    height: 100%;
+    display: flex;
+    align-items: center;
+  `)}
+`;
+
+export const Infos = styled.div`
+  grid-area: infos;
+  display: flex;
+  flex-direction: column;
+  gap: ${rem(16)};
+  justify-content: end;
+
+  ${mobile(css`
+    height: ${rem(36)};
+    margin-bottom: ${rem(24)};
+    justify-content: center;
+    align-items: end;
+  `)}
+
+  ${print(css`
+    display: none;
+  `)}
+
+    svg {
+    ${size(rem(12))}
+  }
+`;
+
+type InfoProps = {
+  hideInMobile?: boolean;
+};
+
+export const Info = styled.button<InfoProps>`
+  ${({ theme, hideInMobile }) => css`
+    background-color: transparent;
+    color: ${theme.colors.white};
+    display: flex;
+    gap: ${rem(4)};
+    width: fit-content;
+    font-style: normal;
+    font-weight: 700;
+    font-size: ${rem(12)};
+    line-height: ${rem(15)};
+    text-transform: lowercase;
+    align-items: center;
+    padding: ${rem(4)};
+
+    ${mobile(css`
+      ${hideInMobile &&
+      css`
+        display: none;
+      `}
+    `)}
+  `}
+`;
+
 export const Menu = styled.ul`
   ${({ theme }) => css`
     list-style-type: none;
     display: flex;
+    grid-area: menu;
 
     ${tabletDesktop(css`
       width: ${rem(menuSizeTabletDesktop)};
