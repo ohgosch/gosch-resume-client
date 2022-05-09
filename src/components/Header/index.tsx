@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import WhatsAppIcon from 'public/assets/img/icon/whatsapp.svg';
 import LinkedInIcon from 'public/assets/img/icon/linkedin.svg';
 import GitHubIcon from 'public/assets/img/icon/github.svg';
+import MailIcon from 'public/assets/img/icon/envelope.svg';
 import PrintIcon from 'public/assets/img/icon/print.svg';
 import SoundIcon from 'public/assets/img/icon/sound.svg';
 import Logo from 'public/assets/img/logo.svg';
@@ -23,6 +24,7 @@ const Header = ({ forceBorder, data }: HeaderProps) => {
   const linkedinData = data.find((item) => item.slug === 'linkedin');
   const githubData = data.find((item) => item.slug === 'github');
   const whatsappData = data.find((item) => item.slug === 'whatsapp');
+  const mailData = data.find((item) => item.slug === 'mail');
   const audioPlayer = useMemo(() => {
     if (typeof window !== 'undefined') {
       return window?.document?.getElementById('player');
@@ -76,6 +78,20 @@ const Header = ({ forceBorder, data }: HeaderProps) => {
                   title="WhatsApp"
                 >
                   {whatsappData.display}
+                </S.MenuItemText>
+              </S.MenuItemIconWrapper>
+            </S.MenuItem>
+          )}
+          {!!mailData && (
+            <S.MenuItem aria-label={t('mail')}>
+              <S.MenuItemIconWrapper>
+                <MailIcon className="icon" aria-hidden />
+                <S.MenuItemText
+                  href={mailData.url}
+                  target="_blank"
+                  title={t('mail')}
+                >
+                  {mailData.display}
                 </S.MenuItemText>
               </S.MenuItemIconWrapper>
             </S.MenuItem>

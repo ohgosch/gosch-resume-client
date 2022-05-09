@@ -6,5 +6,6 @@
   "experiences": "Experiences",
   "courses": "Courses",
   "period": "Period",
-  "role": "Role"
+  "role": "Role",
+  "see-updated-content": "For the updated resume, you can access <a>{{url}}</a>"
 }
