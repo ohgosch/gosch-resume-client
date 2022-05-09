@@ -48,4 +48,5 @@ export const MenuItem = styled.a<MenuItemProps>`
 
 export const MenuItemLink = styled.a`
   color: inherit;
+  text-decoration: underline;
 `;

@@ -151,7 +151,7 @@ export const Menu = styled.ul`
       flex-direction: column;
       background-color: ${theme.colors.secondary};
       justify-content: center;
-      padding: ${rem(54)} 0;
+      padding: ${rem(22)} 0;
     `)}
 
     ${mobile(css`
