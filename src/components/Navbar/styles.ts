@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { rem } from 'polished';
 
-import { mobile, print } from 'visual/medias';
+import { mobile, notPrint, print } from 'visual/medias';
 
 export const Container = styled.nav`
   ${({ theme }) => css`
@@ -13,15 +13,15 @@ export const Container = styled.nav`
     ${mobile(css`
       display: none;
     `)}
-
-    ${print(css`
-      display: none;
-    `)}
   `}
 `;
 
-export const MenuItem = styled.a`
-  ${({ theme }) => css`
+type MenuItemProps = {
+  as?: string;
+};
+
+export const MenuItem = styled.a<MenuItemProps>`
+  ${({ theme, as }) => css`
     font-style: normal;
     font-weight: 400;
     font-size: ${rem(16)};
@@ -29,5 +29,23 @@ export const MenuItem = styled.a`
     color: ${theme.colors.primary};
     padding: ${rem(12)};
     text-decoration: none;
+
+    ${as === 'p' &&
+    notPrint(
+      css`
+        display: none;
+      `,
+    )}
+
+    ${as !== 'p' &&
+    print(
+      css`
+        display: none;
+      `,
+    )}
   `}
+`;
+
+export const MenuItemLink = styled.a`
+  color: inherit;
 `;
