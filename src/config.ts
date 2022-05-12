@@ -6,6 +6,6 @@ export default {
   },
   description: 'Gosch',
   social: {
-    twitter: 'goschbrasil',
+    twitter: 'ohgosch',
   },
 };

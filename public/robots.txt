@@ -1,2 +1,17 @@
-User-agent: *
+User-Agent: Googlebot
+Disallow: /
+
+User-Agent: Googlebot-Image
+Disallow: /
+
+User-Agent: msnbot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: DuckDuckBot
 Disallow: /
