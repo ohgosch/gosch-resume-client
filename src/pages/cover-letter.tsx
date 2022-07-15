@@ -20,7 +20,7 @@ const Page = ({ data }) => {
 export const getStaticProps = async ({ locale }) => {
   const {
     object: { metadata },
-  } = await getResume();
+  } = await getResume(locale);
 
   return {
     props: {

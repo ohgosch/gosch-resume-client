@@ -1,0 +1,12 @@
+{
+  "name": "Gosch",
+  "resume": "Currículo",
+  "description": "Desenvolvendo soluções web, visando maior acessibilidade e desempenho das aplicações.",
+  "cover-letter": "Apresentação",
+  "skills": "Habilidades",
+  "experiences": "Experiências",
+  "courses": "Cursos",
+  "period": "Período",
+  "role": "Cargo",
+  "see-updated-content": "Tenha acesso ao currículo atualizado em <a>{{url}}</a>"
+}

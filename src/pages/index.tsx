@@ -21,7 +21,7 @@ const Page = ({ data }) => {
 export async function getStaticProps({ locale }) {
   const {
     object: { metadata },
-  } = await getResume();
+  } = await getResume(locale);
 
   return {
     props: {
