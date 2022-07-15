@@ -127,7 +127,7 @@ export const Role = styled.span`
     color: ${theme.colors.black};
 
     ${desktop(css`
-      max-width: ${rem(190)};
+      max-width: ${rem(200)};
     `)}
 
     ${tabletDesktop(css`
