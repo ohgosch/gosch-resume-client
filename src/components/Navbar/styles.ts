@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { rem } from 'polished';
 
-import { mobile, notPrint, print } from 'visual/medias';
+import { mobile, notPrint, print, tabletDesktop } from 'visual/medias';
 
 export const Container = styled.nav`
   ${({ theme }) => css`
@@ -29,6 +29,30 @@ export const MenuItem = styled.a<MenuItemProps>`
     color: ${theme.colors.primary};
     padding: ${rem(12)};
     text-decoration: none;
+
+    ${tabletDesktop(
+      notPrint(css`
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        :after {
+          content: '';
+          width: 0;
+          height: ${rem(1)};
+          display: block;
+          background-color: ${theme.colors.primary};
+          border-radius: ${rem(1)};
+          position: absolute;
+          transition: 0.2s ease;
+          bottom: ${rem(10)};
+        }
+
+        :hover:after {
+          width: calc(100% - ${rem(12 * 2)});
+        }
+      `),
+    )}
 
     ${as === 'p' &&
     notPrint(
