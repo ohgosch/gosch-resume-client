@@ -162,25 +162,6 @@ export const Menu = styled.ul`
   `}
 `;
 
-export const MenuItem = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  ${({ theme }) => css`
-    ${tabletDesktop(css`
-      ${size(rem(menuSizeTabletDesktop))}
-    `)}
-
-    ${mobile(css`
-      ${size(rem(36))};
-      border: ${rem(2)} solid ${theme.colors.secondary};
-      border-radius: ${rem(5)};
-    `)}
-  `}
-`;
-
 export const MenuItemIconWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -189,6 +170,9 @@ export const MenuItemIconWrapper = styled.div`
 
     .icon {
       ${tabletDesktop(css`
+        position: relative;
+        z-index: 10;
+        pointer-events: none;
         ${size(rem(28))}
       `)}
 
@@ -212,8 +196,12 @@ export const MenuItemText = styled.a`
       color: ${theme.colors.secondary};
       text-decoration: none;
       position: absolute;
+      transition: 0.2s ease;
       right: 0;
       padding-right: ${rem(menuSizeTabletDesktop + 24)};
+      padding-left: ${rem(24)};
+      border-bottom-left-radius: ${rem(5)};
+      border-top-left-radius: ${rem(5)};
       height: ${rem(menuSizeTabletDesktop)};
       white-space: nowrap;
     `)}
@@ -225,6 +213,30 @@ export const MenuItemText = styled.a`
       position: absolute;
       left: 0;
       top: 0;
+    `)}
+  `}
+`;
+
+export const MenuItem = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  ${({ theme }) => css`
+    ${tabletDesktop(css`
+      ${size(rem(menuSizeTabletDesktop))}
+
+      :hover ${MenuItemText} {
+        background-color: ${theme.colors.secondary};
+        color: ${theme.colors.primary};
+      }
+    `)}
+
+    ${mobile(css`
+      ${size(rem(36))};
+      border: ${rem(2)} solid ${theme.colors.secondary};
+      border-radius: ${rem(5)};
     `)}
   `}
 `;
