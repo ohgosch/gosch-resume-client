@@ -11,7 +11,7 @@ type ExperiencesProps = {
 };
 
 const Experiences = ({ data }: ExperiencesProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <S.Container>
@@ -21,9 +21,13 @@ const Experiences = ({ data }: ExperiencesProps) => {
             <S.HeaderContent>
               <Heading2>{experience.company_name}</Heading2>
               <S.Date aria-label={t('period')}>
-                {formatDate(experience.start_date, 'MMM/yyyy')}
+                {formatDate(experience.start_date, 'MMM/yyyy', i18n.language)}
                 {experience.end_date &&
-                  ` - ${formatDate(experience.end_date, 'MMM/yyyy')}`}
+                  ` - ${formatDate(
+                    experience.end_date,
+                    'MMM/yyyy',
+                    i18n.language,
+                  )}`}
               </S.Date>
             </S.HeaderContent>
             <S.Role aria-label={t('role')}>{experience.role}</S.Role>

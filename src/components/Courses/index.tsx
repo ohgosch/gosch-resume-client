@@ -10,7 +10,7 @@ export type CoursesProps = {
 };
 
 const Courses = ({ data }: CoursesProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <S.Container>
@@ -20,9 +20,9 @@ const Courses = ({ data }: CoursesProps) => {
             <S.Title>{course.institution_name}</S.Title>
             <S.Subtitle>{course.course_title}</S.Subtitle>
             <S.Date aria-label={t('period')}>
-              {formatDate(course.start_date, 'MMM/yyyy')}
+              {formatDate(course.start_date, 'MMM/yyyy', i18n.language)}
               {course.end_date &&
-                ` - ${formatDate(course.end_date, 'MMM/yyyy')}`}
+                ` - ${formatDate(course.end_date, 'MMM/yyyy', i18n.language)}`}
             </S.Date>
           </S.CourseContent>
         </S.Course>
