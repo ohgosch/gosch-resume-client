@@ -14,14 +14,21 @@ import { Paragraph } from 'visual/styles/Texts';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   ${mobile(css`
     gap: ${rem(36)};
   `)}
 
+  ${mobileTablet(css`
+    align-items: flex-start;
+  `)}
+
   ${tabletDesktop(css`
     gap: ${rem(64)};
+  `)}
+
+  ${desktop(css`
+    align-items: center;
   `)}
 `;
 
