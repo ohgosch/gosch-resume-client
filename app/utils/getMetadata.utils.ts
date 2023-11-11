@@ -16,7 +16,7 @@ export const getMetadata = async ({
   const siteName = t('common.name');
   const title = pageTitle ? `${pageTitle} - ${siteName}` : siteName;
   const description = pageDescription ?? t('common.description');
-  const images = '/assets/img/seo/linkedin-preview.png';
+  const images = '/assets/img/seo/card.png';
 
   return {
     title,
