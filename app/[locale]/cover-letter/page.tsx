@@ -30,9 +30,9 @@ export function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const { locale } = params;
-  const t = await getScopedI18n('common');
-
   setStaticParamsLocale(locale);
+
+  const t = await getScopedI18n('common');
 
   const {
     object: { metadata: data },

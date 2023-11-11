@@ -30,9 +30,13 @@ export interface SkillResponse {
 }
 
 export interface ApiResponse {
-  social_medias: SocialMedia[];
-  cover_letter: MDXRemoteSerializeResult;
-  experiences: ExperienceResponse[];
-  skills: SkillResponse[];
-  courses: CourseResponse[];
+  object: {
+    metadata: {
+      social_medias: SocialMedia[];
+      cover_letter: MDXRemoteSerializeResult;
+      experiences: ExperienceResponse[];
+      skills: SkillResponse[];
+      courses: CourseResponse[];
+    };
+  };
 }

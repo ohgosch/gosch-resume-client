@@ -1,10 +1,9 @@
+import { render, screen } from '@testing-library/react';
 import Header, { type HeaderProps } from 'components/Header/index';
-
-import { render, screen } from '../../utils/test-utils';
 
 describe('<Header />', () => {
   const props: HeaderProps = {
-    data: [
+    socialMedias: [
       {
         url: 'http://linked-in.com',
         display: 'Linked-in',
@@ -28,8 +27,8 @@ describe('<Header />', () => {
 
     expect(screen.getByRole('heading', { name: /Gosch/i })).toBeInTheDocument();
 
-    expect(screen.getByText(props.data[0].display)).toBeInTheDocument();
-    expect(screen.getByText(props.data[1].display)).toBeInTheDocument();
-    expect(screen.getByText(props.data[2].display)).toBeInTheDocument();
+    expect(screen.getByText(props.socialMedias[0].display)).toBeInTheDocument();
+    expect(screen.getByText(props.socialMedias[1].display)).toBeInTheDocument();
+    expect(screen.getByText(props.socialMedias[2].display)).toBeInTheDocument();
   });
 });

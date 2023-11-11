@@ -1,6 +1,5 @@
+import { render, screen } from '@testing-library/react';
 import Section, { type SectionProps } from 'components/Section/index';
-
-import { render, screen } from '../../utils/test-utils';
 
 describe('<Section />', () => {
   it('should render ...', () => {

@@ -44,19 +44,8 @@ export const Heading2 = styled.h3`
     `)}
   `}
 `;
-
-interface ParagraphProps {
-  align?: 'left' | 'justify';
-}
-
-const modifiers = {
-  align: ({ align = 'left' }: Pick<ParagraphProps, 'align'>) => css`
-    text-align: ${align};
-  `,
-};
-
-export const ParagraphStyle = css<ParagraphProps>`
-  ${({ theme, align }) => css`
+export const ParagraphStyle = css`
+  ${({ theme }) => css`
     font-style: normal;
     font-weight: 400;
     color: ${theme.colors.black};
@@ -70,12 +59,10 @@ export const ParagraphStyle = css<ParagraphProps>`
       font-size: ${rem(18)};
       line-height: ${rem(22)};
     `)}
-    
-    ${modifiers.align({ align })}
   `}
 `;
 
-export const Paragraph = styled.p<ParagraphProps>`
+export const Paragraph = styled.p`
   ${ParagraphStyle}
 
   ${print(css`
