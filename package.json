@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "yarn plop --plopfile generators/plopfile.js",
+    "generate": "yarn plop",
     "test:all": "lint-staged",
     "test": "vitest",
     "test:watch": "yarn test --watch"
@@ -45,7 +45,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^11.0.0",
-    "plop": "^2.7.4",
+    "plop": "^4.0.0",
     "prettier": "^3.0.3",
     "typescript": "5.2.2"
   },
