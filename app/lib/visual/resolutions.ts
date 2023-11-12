@@ -7,11 +7,11 @@ const resolutions = {
   tablet: {
     min: 737,
     max: 1024,
-    $middle: 700,
+    middle: 700,
   },
   desktop: {
     min: 1025,
-    $middle: 700,
+    middle: 700,
   },
 };
 

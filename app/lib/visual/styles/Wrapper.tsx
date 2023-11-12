@@ -22,7 +22,7 @@ export const Wrapper = styled.div<WrapperProps>`
       width: 88%;
       max-width: ${rem(
         $middle
-          ? theme.resolutions.tablet.$middle
+          ? theme.resolutions.tablet.middle
           : theme.resolutions.tablet.max,
       )};
     `)}
@@ -31,7 +31,7 @@ export const Wrapper = styled.div<WrapperProps>`
       width: 90%;
       max-width: ${rem(
         $middle
-          ? theme.resolutions.desktop.$middle
+          ? theme.resolutions.desktop.middle
           : theme.resolutions.desktop.min,
       )};
     `)}
