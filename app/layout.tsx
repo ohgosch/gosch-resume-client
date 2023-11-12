@@ -1,17 +1,16 @@
-'use client';
+import { i18n } from 'locales/i18n.config';
+import { getCurrentLocale } from 'locales/server';
+import { setStaticParamsLocale } from 'next-international/server';
+import { type ReactNode } from 'react';
+import { Contexts } from 'utils/contexts';
 
-import StyledComponentsRegistry from 'lib/registry';
-import { GlobalStyle } from 'lib/visual/styles/GlobalStyle';
-import theme from 'lib/visual/theme';
-import { ThemeProvider } from 'styled-components';
+export default function RootLayout({ children }: { children: ReactNode }) {
+  setStaticParamsLocale(i18n.defaultLocale);
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+  const locale = getCurrentLocale();
+
   return (
-    <html lang="en">
+    <html lang={locale.split('-')[0]}>
       <head>
         <link
           rel="preconnect"
@@ -24,12 +23,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <StyledComponentsRegistry>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            {children}
-          </ThemeProvider>
-        </StyledComponentsRegistry>
+        <Contexts>{children}</Contexts>
       </body>
     </html>
   );

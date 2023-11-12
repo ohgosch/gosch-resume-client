@@ -21,6 +21,13 @@ export const getMetadata = async ({
   return {
     title,
     description,
+    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_URL}`),
+    alternates: {
+      languages: {
+        'pt-BR': '/pt-BR',
+        'en-US': '/en-US',
+      },
+    },
     authors: { name: 'Gosch' },
     twitter: {
       card: 'summary',
