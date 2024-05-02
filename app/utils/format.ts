@@ -24,7 +24,7 @@ export const formatDate = (
 export const formatPhone = (phone: string): string => {
   const regex = /(\d{2})(\d{3})(\d{5})(\d{4})/;
 
-  const [_, DDI, DDD, P1, P2] = regex.exec(phone) ?? [];
+  const [, DDI, DDD, P1, P2] = regex.exec(phone) ?? [];
 
   return `+${DDI} ${DDD} ${P1}-${P2}`;
 };
