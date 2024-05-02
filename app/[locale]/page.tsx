@@ -6,7 +6,7 @@ import Header from 'components/Header';
 import Navbar from 'components/Navbar';
 import Section from 'components/Section';
 import Skills from 'components/Skills';
-import { getResume } from 'lib/logic/services/resume';
+import { getSkeleton } from 'lib/logic/services/resume.service';
 import Wrapper from 'lib/visual/styles/Wrapper';
 import { type TLocale } from 'locales/i18n.config';
 import {
@@ -39,18 +39,24 @@ export function generateStaticParams() {
 }
 
 export default async function Page({ params }: Props) {
+  /*
+   * Store's
+   * */
   const { locale } = params;
   setStaticParamsLocale(locale);
 
+  /*
+   * Request's
+   * */
   const t = await getScopedI18n('common');
 
   const {
-    object: { metadata: data },
-  } = await getResume(locale as TLocale);
+    data: { data: skeleton },
+  } = await getSkeleton(locale as TLocale);
 
   return (
     <>
-      <Header socialMedias={data.social_medias} />
+      <Header skeleton={skeleton} />
       <S.Container>
         <Navbar />
         <S.Content>
@@ -66,12 +72,12 @@ export default async function Page({ params }: Props) {
           </Section>
           <Section name={t('experiences')} id="experiences">
             <Wrapper>
-              <Experiences experiences={data.experiences} />
+              <Experiences />
             </Wrapper>
           </Section>
           <Section name={t('courses')} id="courses">
             <Wrapper $middle>
-              <Courses data={data.courses} />
+              <Courses />
             </Wrapper>
           </Section>
         </S.Content>

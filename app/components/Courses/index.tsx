@@ -1,28 +1,44 @@
+import { getCourses } from 'lib/logic/services/resume.service';
+import type { TLocale } from 'locales/i18n.config';
 import { getCurrentLocale, getScopedI18n } from 'locales/server';
-import { type CourseResponse } from 'types/Api';
 import { formatDate } from 'utils/format';
 
 import * as S from './styles';
 
-export interface CoursesProps {
-  data: CourseResponse[];
-}
-
-const Courses = async ({ data }: CoursesProps) => {
+const Courses = async () => {
+  /*
+   * Store's
+   * */
   const locale = getCurrentLocale();
+
+  /*
+   * Request's
+   * */
   const t = await getScopedI18n('common');
+
+  const {
+    data: { data: courses },
+  } = await getCourses(locale as TLocale);
 
   return (
     <S.Container>
-      {data.map((course) => (
-        <S.Course key={course.institution_name + course.start_date}>
+      {courses.map((course) => (
+        <S.Course key={course.id}>
           <S.CourseContent>
-            <S.Title>{course.institution_name}</S.Title>
-            <S.Subtitle>{course.course_title}</S.Subtitle>
+            <S.Title>{course.attributes.institution}</S.Title>
+            <S.Subtitle>{course.attributes.description}</S.Subtitle>
             <S.Date aria-label={t('period')}>
-              {formatDate(course.start_date, 'MMM/yyyy', locale)}
-              {course.end_date &&
-                ` - ${formatDate(course.end_date, 'MMM/yyyy', locale)}`}
+              {formatDate(
+                new Date(course.attributes.startDate),
+                'MMM/yyyy',
+                locale,
+              )}
+              {course.attributes.endDate &&
+                ` - ${formatDate(
+                  new Date(course.attributes.endDate),
+                  'MMM/yyyy',
+                  locale,
+                )}`}
             </S.Date>
           </S.CourseContent>
         </S.Course>

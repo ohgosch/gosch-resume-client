@@ -1,40 +1,64 @@
+import { getExperiences } from 'lib/logic/services/resume.service';
 import { Heading2 } from 'lib/visual/styles/Texts';
+import type { TLocale } from 'locales/i18n.config';
 import { getCurrentLocale, getScopedI18n } from 'locales/server';
-import { type ExperienceResponse } from 'types/Api';
-import { formatDate } from 'utils/format';
+import { formatDate, formatStaticURL } from 'utils/format';
 
 import * as S from './styles';
 
-interface ExperiencesProps {
-  experiences: ExperienceResponse[];
-}
-
-const Experiences = async ({ experiences }: ExperiencesProps) => {
+const Experiences = async () => {
+  /*
+   * Store's
+   * */
   const locale = getCurrentLocale();
+
+  /*
+   * Request's
+   * */
   const t = await getScopedI18n('common');
+
+  const {
+    data: { data: experiences },
+  } = await getExperiences(locale as TLocale);
 
   return (
     <S.Container>
       {experiences.map((experience) => (
-        <S.Experience key={experience.company_name + experience.start_date}>
+        <S.Experience key={experience.attributes.slug}>
           <S.Header>
             <S.HeaderContent>
-              <Heading2>{experience.company_name}</Heading2>
+              <Heading2>{experience.attributes.company}</Heading2>
               <S.Date aria-label={t('period')}>
-                {formatDate(experience.start_date, 'MMM/yyyy', locale)}
-                {!!experience.end_date &&
-                  ` - ${formatDate(experience.end_date, 'MMM/yyyy', locale)}`}
+                {formatDate(
+                  new Date(experience.attributes.startDate),
+                  'MMM/yyyy',
+                  locale,
+                )}
+                {!!experience.attributes.endDate &&
+                  ` - ${formatDate(
+                    new Date(experience.attributes.endDate),
+                    'MMM/yyyy',
+                    locale,
+                  )}`}
               </S.Date>
             </S.HeaderContent>
-            <S.Role aria-label={t('role')}>{experience.role}</S.Role>
+            <S.Role aria-label={t('role')}>{experience.attributes.role}</S.Role>
           </S.Header>
-          <S.LogoWrapper aria-hidden $small={!experience?.company_logo?.url}>
-            {!!experience.company_logo?.url && (
+          <S.LogoWrapper aria-hidden $small={!experience.attributes.logo.data}>
+            {!!experience.attributes.logo.data?.attributes.url && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={experience.company_logo.url} alt="" />
+              <img
+                src={formatStaticURL(
+                  experience.attributes.logo.data.attributes.url,
+                )}
+                alt={
+                  experience.attributes.logo.data.attributes.alternativeText ??
+                  ''
+                }
+              />
             )}
           </S.LogoWrapper>
-          <S.Description>{experience.description}</S.Description>
+          <S.Description>{experience.attributes.description}</S.Description>
         </S.Experience>
       ))}
     </S.Container>
