@@ -6,7 +6,14 @@ import { getCurrentLocale } from 'locales/server';
 import * as S from './styles';
 
 const CoverLetter = async () => {
+  /*
+   * Store's
+   * */
   const locale = getCurrentLocale();
+
+  /*
+   * Request's
+   * */
   const {
     data: {
       data: {

@@ -32,10 +32,6 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
   const playerRef = useRef<HTMLAudioElement>(null);
 
   /*
-   * State's
-   * */
-
-  /*
    * Memo's
    * */
   const phoneMasked = useMemo(
@@ -49,10 +45,6 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
   const triggerPlayAudio = useCallback(() => {
     void playerRef?.current?.play();
   }, []);
-
-  /*
-   * Effect's
-   * */
 
   return (
     <S.Container forceBorder={forceBorder}>
