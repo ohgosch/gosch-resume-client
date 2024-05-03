@@ -1,10 +1,10 @@
 import { i18n } from 'locales/i18n.config';
 import { getCurrentLocale } from 'locales/server';
 import { setStaticParamsLocale } from 'next-international/server';
-import { type ReactNode } from 'react';
+import { type PropsWithChildren } from 'react';
 import { Contexts } from 'utils/contexts';
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   setStaticParamsLocale(i18n.defaultLocale);
 
   const locale = getCurrentLocale();

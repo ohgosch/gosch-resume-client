@@ -1,9 +1,8 @@
 'use client';
 
+import { mobile, tabletDesktop } from 'lib/visual/medias';
 import { rem } from 'polished';
 import styled, { css } from 'styled-components';
-
-import { mobile, tabletDesktop } from '../../lib/visual/medias';
 
 export const Container = styled.section`
   display: flex;

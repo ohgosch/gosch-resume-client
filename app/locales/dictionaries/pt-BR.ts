@@ -20,6 +20,6 @@ export default {
     mail: 'E-mail',
   },
   footer: {
-    development: 'desenvolvido usando Next.js e Cosmic',
+    development: 'desenvolvido usando Next.js e Strapi',
   },
 } as const;

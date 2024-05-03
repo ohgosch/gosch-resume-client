@@ -3,6 +3,9 @@ import { getScopedI18n } from 'locales/server';
 import * as S from './styles';
 
 const Navbar = async () => {
+  /*
+   * Request's
+   * */
   const t = await getScopedI18n('common');
 
   return (

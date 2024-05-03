@@ -2,7 +2,7 @@ import CoverLetter from 'components/CoverLetter';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Section from 'components/Section';
-import { getResume } from 'lib/logic/services/resume';
+import { getSkeleton } from 'lib/logic/services/resume.service';
 import Wrapper from 'lib/visual/styles/Wrapper';
 import { type TLocale } from 'locales/i18n.config';
 import {
@@ -35,18 +35,24 @@ export function generateStaticParams() {
 }
 
 export default async function Page({ params }: Props) {
+  /*
+   * Store's
+   * */
   const { locale } = params;
   setStaticParamsLocale(locale);
 
+  /*
+   * Request's
+   * */
   const t = await getScopedI18n('common');
 
   const {
-    object: { metadata: data },
-  } = await getResume(locale as TLocale);
+    data: { data: skeleton },
+  } = await getSkeleton(locale as TLocale);
 
   return (
     <>
-      <Header socialMedias={data.social_medias} forceBorder />
+      <Header skeleton={skeleton} forceBorder />
       <S.Container>
         <S.Content>
           <Section name={t('cover-letter')} id="cover-letter">

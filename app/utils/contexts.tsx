@@ -3,10 +3,10 @@
 import StyledComponentsRegistry from 'lib/registry';
 import { GlobalStyle } from 'lib/visual/styles/GlobalStyle';
 import theme from 'lib/visual/theme';
-import { type ReactNode } from 'react';
+import { type PropsWithChildren } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-export const Contexts = ({ children }: { children: ReactNode }) => {
+export const Contexts = ({ children }: PropsWithChildren) => {
   return (
     <StyledComponentsRegistry>
       <ThemeProvider theme={theme}>

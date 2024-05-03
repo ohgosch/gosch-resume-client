@@ -1,11 +1,11 @@
 import { Heading1 } from 'lib/visual/styles/Texts';
+import { type PropsWithChildren } from 'react';
 
 import * as S from './styles';
 
-export interface SectionProps {
+export interface SectionProps extends PropsWithChildren {
   name: string;
   id: string;
-  children: JSX.Element;
 }
 
 const Section = async ({ name, children, id }: SectionProps) => {

@@ -21,4 +21,8 @@ export const Container = styled.div`
       `)}
     }
   }
+
+  strong {
+    font-weight: 900;
+  }
 `;
