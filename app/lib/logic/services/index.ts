@@ -6,4 +6,5 @@ export const privateApi = axios.create({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${process.env.API_TOKEN}`,
   },
+  timeout: 5000,
 });
