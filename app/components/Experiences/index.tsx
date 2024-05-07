@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns';
 import { getExperiences } from 'lib/logic/services/resume.service';
 import { Heading2 } from 'lib/visual/styles/Texts';
 import type { TLocale } from 'locales/i18n.config';
@@ -30,13 +31,13 @@ const Experiences = async () => {
               <Heading2>{experience.attributes.company}</Heading2>
               <S.Date aria-label={t('period')}>
                 {formatDate(
-                  new Date(experience.attributes.startDate),
+                  parseISO(experience.attributes.startDate),
                   'MMM/yyyy',
                   locale,
                 )}
                 {!!experience.attributes.endDate &&
                   ` - ${formatDate(
-                    new Date(experience.attributes.endDate),
+                    parseISO(experience.attributes.endDate),
                     'MMM/yyyy',
                     locale,
                   )}`}

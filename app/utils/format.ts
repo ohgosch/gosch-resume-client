@@ -30,7 +30,7 @@ export const formatPhone = (phone: string): string => {
 };
 
 export const formatStaticURL = (url: string) => {
-  if (process.env.NODE_ENV === 'development') return process.env.API_URL + url;
+  // if (process.env.NODE_ENV === 'development') return process.env.API_URL + url;
 
   return url;
 };

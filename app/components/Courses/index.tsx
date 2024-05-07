@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns';
 import { getCourses } from 'lib/logic/services/resume.service';
 import type { TLocale } from 'locales/i18n.config';
 import { getCurrentLocale, getScopedI18n } from 'locales/server';
@@ -29,13 +30,13 @@ const Courses = async () => {
             <S.Subtitle>{course.attributes.description}</S.Subtitle>
             <S.Date aria-label={t('period')}>
               {formatDate(
-                new Date(course.attributes.startDate),
+                parseISO(course.attributes.startDate),
                 'MMM/yyyy',
                 locale,
               )}
               {course.attributes.endDate &&
                 ` - ${formatDate(
-                  new Date(course.attributes.endDate),
+                  parseISO(course.attributes.endDate),
                   'MMM/yyyy',
                   locale,
                 )}`}
