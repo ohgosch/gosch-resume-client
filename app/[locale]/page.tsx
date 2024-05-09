@@ -66,7 +66,7 @@ export default async function Page({ params }: Props) {
             </Wrapper>
           </Section>
           <Section name={t('skills')} id="skills">
-            <Wrapper $middle>
+            <Wrapper>
               <Skills />
             </Wrapper>
           </Section>

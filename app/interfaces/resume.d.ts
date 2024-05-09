@@ -96,3 +96,7 @@ export interface ISkill {
     };
   };
 }
+
+export interface ISkillCategoryGroup extends ISkillCategory {
+  skills: ISkill[];
+}
