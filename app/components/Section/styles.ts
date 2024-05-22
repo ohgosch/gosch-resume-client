@@ -4,17 +4,29 @@ import { mobile, tabletDesktop } from 'lib/visual/medias';
 import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  ${mobile(css`
-    gap: ${rem(36)};
-  `)}
+import { type SectionProps } from './index';
 
-  ${tabletDesktop(css`
-    gap: ${rem(50)};
-  `)}
+export const Container = styled.section<
+  Pick<SectionProps, '$isBreakPrintBefore'>
+>`
+  ${({ $isBreakPrintBefore }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${$isBreakPrintBefore &&
+    css`
+      page-break-before: always;
+    `}
+
+    ${mobile(css`
+      gap: ${rem(36)};
+    `)}
+  
+    ${tabletDesktop(css`
+      gap: ${rem(50)};
+    `)}
+  `}
 `;
 
 export const Content = styled.div`

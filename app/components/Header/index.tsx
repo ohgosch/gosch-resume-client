@@ -79,6 +79,18 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>
+          <S.MenuItem aria-label={scopedT('mail')}>
+            <S.MenuItemIconWrapper>
+              <EnvelopeIcon aria-hidden />
+              <S.MenuItemText
+                href={`mailto:${attributes.email}`}
+                target="_blank"
+                title={scopedT('mail')}
+              >
+                {attributes.email}
+              </S.MenuItemText>
+            </S.MenuItemIconWrapper>
+          </S.MenuItem>
           <S.MenuItem aria-label="WhatsApp">
             <S.MenuItemIconWrapper>
               <WhatsAppIcon aria-hidden />
@@ -91,20 +103,6 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>
-          {!!attributes.email && (
-            <S.MenuItem aria-label={scopedT('mail')}>
-              <S.MenuItemIconWrapper>
-                <EnvelopeIcon aria-hidden />
-                <S.MenuItemText
-                  href={`mailto:${attributes.email}`}
-                  target="_blank"
-                  title={scopedT('mail')}
-                >
-                  {attributes.email}
-                </S.MenuItemText>
-              </S.MenuItemIconWrapper>
-            </S.MenuItem>
-          )}
         </S.Menu>
         <S.Infos>
           <S.Info
