@@ -14,9 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     html {
       color: ${theme.colors.black};
       font-family: 'Rufina', serif;
+      background-color: ${theme.colors.white};
 
       ${notPrint(css`
-        background-color: ${theme.colors.white};
         min-height: 100vh;
       `)}
 

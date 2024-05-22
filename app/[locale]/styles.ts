@@ -22,6 +22,6 @@ export const Content = styled.main`
 
   ${print(css`
     margin-top: ${rem(80)};
-    gap: ${rem(80)};
+    gap: ${rem(110)};
   `)}
 `;

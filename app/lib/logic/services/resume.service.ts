@@ -9,7 +9,7 @@ import {
   type IExperience,
   type ISkeleton,
 } from 'interfaces/resume';
-import { privateApi } from 'lib/logic/services/index';
+import { privateApi } from 'lib/logic/services';
 import { type TLocale } from 'locales/i18n.config';
 
 export const getSkeleton = async (locale: TLocale) =>
