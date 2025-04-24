@@ -1,6 +1,6 @@
 export default {
   common: {
-    name: 'Gosch',
+    name: 'Ricardo Gosch dos Santos',
     resume: 'Resume',
     description:
       'Developing web solutions, aiming at greater accessibility and performance of applications.',

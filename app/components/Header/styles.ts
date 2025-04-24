@@ -2,7 +2,7 @@
 
 import { mobile, print, tabletDesktop } from 'lib/visual/medias';
 import Wrapper from 'lib/visual/styles/Wrapper';
-import { hideVisually, rem, size } from 'polished';
+import { rem, size } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { type HeaderProps } from '.';
@@ -30,12 +30,8 @@ export const Container = styled.header<ContainerProps>`
   `}
 `;
 
-export const Title = styled.h1`
-  ${hideVisually()};
-`;
-
-export const LogoWrapper = styled.div`
-  grid-area: logo;
+export const TitleWrapper = styled.div`
+  grid-area: title;
 
   ${tabletDesktop(
     css`
@@ -49,7 +45,6 @@ export const LogoWrapper = styled.div`
   ${mobile(css`
     width: 100%;
     display: block;
-    text-align: center;
     justify-content: center;
     margin-bottom: ${rem(-72)};
   `)}
@@ -61,6 +56,20 @@ export const LogoWrapper = styled.div`
   `)}
 `;
 
+export const Title = styled.h1`
+  ${({ theme }) => css`
+    font-size: ${rem(48)};
+    color: ${theme.colors.white};
+    max-width: ${rem(370)};
+    cursor: default;
+
+    ${mobile(css`
+      font-size: ${rem(42)};
+      max-width: ${rem(300)};
+    `)}
+  `}
+`;
+
 export const Content = styled(Wrapper)`
   position: relative;
   display: grid;
@@ -68,28 +77,18 @@ export const Content = styled(Wrapper)`
   justify-content: space-between;
 
   ${tabletDesktop(css`
-    grid-template-areas: 'logo menu' 'infos menu';
+    grid-template-areas: 'title menu' 'infos menu';
   `)}
 
   ${mobile(css`
     min-height: ${rem(300)};
-    grid-template-areas: 'logo logo' 'menu infos';
+    grid-template-areas: 'title title' 'menu infos';
     align-items: end;
   `)}
   
   ${print(css`
-    grid-template-areas: 'logo menu';
+    grid-template-areas: 'title menu';
   `)}
-  
-  > ${LogoWrapper} > svg {
-    ${mobile(css`
-      max-width: ${rem(300)};
-    `)}
-
-    ${tabletDesktop(css`
-      width: ${rem(330)};
-    `)}
-  }
 `;
 
 export const Infos = styled.div`
@@ -242,5 +241,3 @@ export const MenuItem = styled.li`
     `)}
   `}
 `;
-
-export const Player = styled.audio(hideVisually);

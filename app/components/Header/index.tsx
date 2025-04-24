@@ -5,11 +5,9 @@ import { EnvelopeIcon } from 'lib/statics/icons/EnvelopeIcon';
 import { GithubIcon } from 'lib/statics/icons/GithubIcon';
 import { LinkedinIcon } from 'lib/statics/icons/LinkedinIcon';
 import { PrintIcon } from 'lib/statics/icons/PrintIcon';
-import { SoundIcon } from 'lib/statics/icons/SoundIcon';
 import { WhatsAppIcon } from 'lib/statics/icons/WhatsAppIcon';
-import { LogoImage } from 'lib/statics/LogoImage';
 import { useI18n, useScopedI18n } from 'locales/client';
-import { useCallback, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { formatPhone } from 'utils/format';
 
 import * as S from './styles';
@@ -27,11 +25,6 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
   const t = useI18n();
 
   /*
-   * Ref's
-   * */
-  const playerRef = useRef<HTMLAudioElement>(null);
-
-  /*
    * Memo's
    * */
   const phoneMasked = useMemo(
@@ -39,20 +32,12 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
     [attributes.phone],
   );
 
-  /*
-   * Callback's
-   * */
-  const triggerPlayAudio = useCallback(() => {
-    void playerRef?.current?.play();
-  }, []);
-
   return (
     <S.Container forceBorder={forceBorder}>
-      <S.Title>{t('common.name')}</S.Title>
       <S.Content>
-        <S.LogoWrapper>
-          <LogoImage />
-        </S.LogoWrapper>
+        <S.TitleWrapper>
+          <S.Title>{t('common.name')}</S.Title>
+        </S.TitleWrapper>
 
         <S.Menu aria-label={scopedT('social-media')}>
           <S.MenuItem aria-label="Linked-in">
@@ -114,13 +99,6 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
             <PrintIcon />
             {scopedT('print')}
           </S.Info>
-          <S.Info onClick={triggerPlayAudio}>
-            <SoundIcon />
-            {scopedT('listen-my-name')}
-          </S.Info>
-          <S.Player id="player" ref={playerRef}>
-            <source src="/assets/audio/gosch.mp3" type="audio/mpeg" />
-          </S.Player>
         </S.Infos>
       </S.Content>
     </S.Container>
