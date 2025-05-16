@@ -18,7 +18,7 @@ import { getMetadata } from 'utils/getMetadata.utils';
 import * as S from './styles';
 
 interface Props {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -34,7 +34,8 @@ export function generateStaticParams() {
   return getStaticParams();
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
   /*
    * Store's
    * */
