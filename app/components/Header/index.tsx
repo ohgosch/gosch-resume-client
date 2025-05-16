@@ -4,14 +4,14 @@ import { type ISkeleton } from 'interfaces/resume';
 import { EnvelopeIcon } from 'lib/statics/icons/EnvelopeIcon';
 import { GithubIcon } from 'lib/statics/icons/GithubIcon';
 import { LinkedinIcon } from 'lib/statics/icons/LinkedinIcon';
+import { PDFIcon } from 'lib/statics/icons/PDFIcon';
 import { WhatsAppIcon } from 'lib/statics/icons/WhatsAppIcon';
 import { useI18n, useScopedI18n } from 'locales/client';
+import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import { formatPhone } from 'utils/format';
 
 import * as S from './styles';
-import { usePathname } from 'next/navigation';
-import { PDFIcon } from 'lib/statics/icons/PDFIcon';
 
 export interface HeaderProps {
   forceBorder?: boolean;
