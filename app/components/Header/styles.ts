@@ -2,6 +2,7 @@
 
 import { mobile, print, tabletDesktop } from 'lib/visual/medias';
 import Wrapper from 'lib/visual/styles/Wrapper';
+import Link from 'next/link';
 import { rem, size } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -117,7 +118,7 @@ interface InfoProps {
   $hideInMobile?: boolean;
 }
 
-export const Info = styled.button<InfoProps>`
+export const Info = styled(Link)<InfoProps>`
   ${({ theme, $hideInMobile }) => css`
     background-color: transparent;
     color: ${theme.colors.white};
