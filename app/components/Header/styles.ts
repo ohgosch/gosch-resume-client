@@ -6,6 +6,7 @@ import { rem, size } from 'polished';
 import styled, { css } from 'styled-components';
 
 import { type HeaderProps } from '.';
+import Link from 'next/link';
 
 const menuSizeTabletDesktop = 64;
 
@@ -117,7 +118,7 @@ interface InfoProps {
   $hideInMobile?: boolean;
 }
 
-export const Info = styled.button<InfoProps>`
+export const Info = styled(Link)<InfoProps>`
   ${({ theme, $hideInMobile }) => css`
     background-color: transparent;
     color: ${theme.colors.white};

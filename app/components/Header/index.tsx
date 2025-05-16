@@ -4,13 +4,14 @@ import { type ISkeleton } from 'interfaces/resume';
 import { EnvelopeIcon } from 'lib/statics/icons/EnvelopeIcon';
 import { GithubIcon } from 'lib/statics/icons/GithubIcon';
 import { LinkedinIcon } from 'lib/statics/icons/LinkedinIcon';
-import { PrintIcon } from 'lib/statics/icons/PrintIcon';
 import { WhatsAppIcon } from 'lib/statics/icons/WhatsAppIcon';
 import { useI18n, useScopedI18n } from 'locales/client';
 import { useMemo } from 'react';
 import { formatPhone } from 'utils/format';
 
 import * as S from './styles';
+import { usePathname } from 'next/navigation';
+import { PDFIcon } from 'lib/statics/icons/PDFIcon';
 
 export interface HeaderProps {
   forceBorder?: boolean;
@@ -23,6 +24,7 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
    * */
   const scopedT = useScopedI18n('header');
   const t = useI18n();
+  const pathname = usePathname();
 
   /*
    * Memo's
@@ -91,12 +93,11 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
         </S.Menu>
         <S.Infos>
           <S.Info
-            onClick={() => {
-              window.print();
-            }}
             $hideInMobile
+            href={`/api/pdf?origin=${pathname}`}
+            target="_blank"
           >
-            <PrintIcon />
+            <PDFIcon />
             {scopedT('print')}
           </S.Info>
         </S.Infos>

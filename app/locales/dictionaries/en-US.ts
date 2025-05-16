@@ -15,7 +15,7 @@ export default {
   header: {
     'social-media': 'Social Medias',
     'logo-alt': 'Gosch Logo',
-    print: 'Print',
+    print: 'PDF Version',
     'listen-my-name': 'Listen my name',
     mail: 'Mail',
   },

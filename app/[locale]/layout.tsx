@@ -3,10 +3,10 @@ import { type PropsWithChildren } from 'react';
 
 export default async function LocaleLayout(
   props: {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
   } & PropsWithChildren,
 ) {
-  const params = props.params;
+  const params = await props.params;
 
   const { locale } = params;
 
