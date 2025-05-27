@@ -11,10 +11,7 @@ export async function generateStaticParams() {
 }
 
 export default async function RootLayout({ children, params }: IRootLayout) {
-  console.log(await params);
-  const locale = (await params)?.locale || 'en-US';
-
-  console.log(locale);
+  const locale = (await params)?.locale || i18n.defaultLocale;
 
   return (
     <html lang={locale.split('-')[0]}>
