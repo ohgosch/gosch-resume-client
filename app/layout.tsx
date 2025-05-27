@@ -1,6 +1,4 @@
 import { i18n, TLocale } from 'locales/i18n.config';
-import { getCurrentLocale } from 'locales/server';
-import { setStaticParamsLocale } from 'next-international/server';
 import { type PropsWithChildren } from 'react';
 import { Contexts } from 'utils/contexts';
 
