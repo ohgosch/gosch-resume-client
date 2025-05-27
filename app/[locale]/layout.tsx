@@ -1,12 +1,14 @@
 import { I18nProviderClient } from 'locales/client';
-import { type PropsWithChildren } from 'react';
+import React, { type PropsWithChildren } from 'react';
 
-export default async function LocaleLayout(
+import { TLocale } from '../locales/i18n.config';
+
+export default function LocaleLayout(
   props: {
-    params: { locale: string };
+    params: Promise<{ locale: TLocale }>;
   } & PropsWithChildren,
 ) {
-  const params = props.params;
+  const params = React.use(props.params);
 
   const { locale } = params;
 

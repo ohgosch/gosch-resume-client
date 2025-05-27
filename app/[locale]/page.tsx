@@ -9,12 +9,7 @@ import Skills from 'components/Skills';
 import { getSkeleton } from 'lib/logic/services/resume.service';
 import Wrapper from 'lib/visual/styles/Wrapper';
 import { type TLocale } from 'locales/i18n.config';
-import {
-  getCurrentLocale,
-  getI18n,
-  getScopedI18n,
-  getStaticParams,
-} from 'locales/server';
+import { getI18n, getScopedI18n, getStaticParams } from 'locales/server';
 import type { Metadata } from 'next';
 import { setStaticParamsLocale } from 'next-international/server';
 import { getMetadata } from 'utils/getMetadata.utils';
@@ -22,15 +17,16 @@ import { getMetadata } from 'utils/getMetadata.utils';
 import * as S from './styles';
 
 interface Props {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: TLocale }>;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getI18n();
+  const { locale } = await params;
 
   return await getMetadata({
     pageTitle: t('common.resume'),
-    locale: getCurrentLocale(),
+    locale,
   });
 }
 

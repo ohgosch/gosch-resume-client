@@ -1,13 +1,22 @@
-import { i18n } from 'locales/i18n.config';
+import { i18n, TLocale } from 'locales/i18n.config';
 import { getCurrentLocale } from 'locales/server';
 import { setStaticParamsLocale } from 'next-international/server';
 import { type PropsWithChildren } from 'react';
 import { Contexts } from 'utils/contexts';
 
-export default function RootLayout({ children }: PropsWithChildren) {
-  const locale = getCurrentLocale() || i18n.defaultLocale;
+interface IRootLayout extends PropsWithChildren {
+  params: Promise<{ locale: TLocale }>;
+}
 
-  setStaticParamsLocale(locale);
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({ children, params }: IRootLayout) {
+  console.log(await params);
+  const locale = (await params)?.locale || 'en-US';
+
+  console.log(locale);
 
   return (
     <html lang={locale.split('-')[0]}>
