@@ -17,7 +17,7 @@ export interface HeaderProps {
   skeleton: ISkeleton;
 }
 
-const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
+const Header = ({ forceBorder, skeleton }: HeaderProps) => {
   /*
    * Store's
    * */
@@ -28,8 +28,8 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
    * Memo's
    * */
   const phoneMasked = useMemo(
-    () => formatPhone(attributes.phone),
-    [attributes.phone],
+    () => formatPhone(skeleton?.phone),
+    [skeleton?.phone],
   );
 
   return (
@@ -44,11 +44,11 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
             <S.MenuItemIconWrapper>
               <LinkedinIcon aria-hidden />
               <S.MenuItemText
-                href={`https://linkedin.com/in/${attributes.linkedin}`}
+                href={`https://linkedin.com/in/${skeleton?.linkedin}`}
                 target="_blank"
                 title="Linked-in"
               >
-                @{attributes.linkedin}
+                @{skeleton?.linkedin}
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>
@@ -56,11 +56,11 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
             <S.MenuItemIconWrapper>
               <GithubIcon aria-hidden />
               <S.MenuItemText
-                href={`https://github.com/${attributes.github}`}
+                href={`https://github.com/${skeleton?.github}`}
                 target="_blank"
                 title="GitHub"
               >
-                @{attributes.github}
+                @{skeleton?.github}
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>
@@ -68,11 +68,11 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
             <S.MenuItemIconWrapper>
               <EnvelopeIcon aria-hidden />
               <S.MenuItemText
-                href={`mailto:${attributes.email}`}
+                href={`mailto:${skeleton.email}`}
                 target="_blank"
                 title={scopedT('mail')}
               >
-                {attributes.email}
+                {skeleton.email}
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>
@@ -80,7 +80,7 @@ const Header = ({ forceBorder, skeleton: { attributes } }: HeaderProps) => {
             <S.MenuItemIconWrapper>
               <WhatsAppIcon aria-hidden />
               <S.MenuItemText
-                href={`https://wa.me/${attributes.phone}`}
+                href={`https://wa.me/${skeleton.phone}`}
                 target="_blank"
                 title="WhatsApp"
               >

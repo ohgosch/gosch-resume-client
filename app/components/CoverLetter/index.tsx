@@ -9,16 +9,14 @@ const CoverLetter = async () => {
   /*
    * Store's
    * */
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   /*
    * Request's
    * */
   const {
     data: {
-      data: {
-        attributes: { coverLetterContent },
-      },
+      data: { coverLetterContent },
     },
   } = await getCoverLetter(locale as TLocale);
 

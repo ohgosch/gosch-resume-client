@@ -10,7 +10,7 @@ const Courses = async () => {
   /*
    * Store's
    * */
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   /*
    * Request's
@@ -24,19 +24,15 @@ const Courses = async () => {
   return (
     <S.Container>
       {courses.map((course) => (
-        <S.Course key={course.id}>
+        <S.Course key={course.documentId}>
           <S.CourseContent>
-            <S.Title>{course.attributes.institution}</S.Title>
-            <S.Subtitle>{course.attributes.description}</S.Subtitle>
+            <S.Title>{course.institution}</S.Title>
+            <S.Subtitle>{course.description}</S.Subtitle>
             <S.Date aria-label={t('period')}>
-              {formatDate(
-                parseISO(course.attributes.startDate),
-                'MMM/yyyy',
-                locale,
-              )}
-              {course.attributes.endDate &&
+              {formatDate(parseISO(course.startDate), 'MMM/yyyy', locale)}
+              {course.endDate &&
                 ` - ${formatDate(
-                  parseISO(course.attributes.endDate),
+                  parseISO(course.endDate),
                   'MMM/yyyy',
                   locale,
                 )}`}

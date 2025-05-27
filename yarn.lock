@@ -3687,7 +3687,7 @@ __metadata:
     husky: "npm:^9.1.4"
     lint-staged: "npm:^15.2.9"
     next: "npm:15.3.2"
-    next-international: "npm:^1.2.4"
+    next-international: "npm:^1.3.1"
     plop: "npm:^4.0.1"
     polished: "npm:^4.3.1"
     prettier: "npm:^3.3.3"
@@ -5251,14 +5251,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-international@npm:^1.2.4":
-  version: 1.2.4
-  resolution: "next-international@npm:1.2.4"
+"next-international@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "next-international@npm:1.3.1"
   dependencies:
     client-only: "npm:^0.0.1"
     international-types: "npm:^0.8.1"
     server-only: "npm:^0.0.1"
-  checksum: 10c0/7564bfd46bb6a6d6e16a4070ee2be6888426a72e178430d9696d88bc3a721e7375bba3d1df806fd56187ed12aca9f69d32ecb788928a06963f30faf0d4734322
+  checksum: 10c0/dd21561c94d0ac7553e0fb855ce3cf5c7908cd96dc26152c369b4cd731bf2e09849d763638a4bc1721c718ab53b07d35d08a3ba0884c7dff44da3ce00d6f9dcd
   languageName: node
   linkType: hard
 

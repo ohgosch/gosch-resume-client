@@ -13,9 +13,9 @@ const SkillGroup = ({ title, skills }: ISkillGroupProps) => {
     <S.ContainerSkillGroup>
       <S.Title>{title}</S.Title>
       <S.Skills>
-        {skills.map(({ id, attributes }) => (
-          <Chip as="li" key={id}>
-            {attributes.name}
+        {skills.map(({ documentId, name }) => (
+          <Chip as="li" key={documentId}>
+            {name}
           </Chip>
         ))}
       </S.Skills>
