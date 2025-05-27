@@ -41,12 +41,12 @@ const Experiences = async () => {
             </S.HeaderContent>
             <S.Role aria-label={t('role')}>{experience.role}</S.Role>
           </S.Header>
-          <S.LogoWrapper aria-hidden $small={!experience.logo?.data}>
-            {!!experience.logo?.data?.url && (
+          <S.LogoWrapper aria-hidden $small={!experience.logo}>
+            {!!experience.logo?.url && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={formatStaticURL(experience.logo.data.url)}
-                alt={experience.logo.data.alternativeText ?? ''}
+                src={formatStaticURL(experience.logo.url)}
+                alt={experience.logo.alternativeText ?? ''}
               />
             )}
           </S.LogoWrapper>

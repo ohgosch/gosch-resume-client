@@ -25,23 +25,21 @@ export interface IExperience {
   locale: string;
   slug: string;
   logo: null | {
-    data: {
-      id: number;
-      name: string;
-      alternativeText: string | null;
-      caption: string | null;
-      width: number;
-      height: number;
-      hash: string;
-      ext: string;
-      mime: string;
-      size: number;
-      url: string;
-      previewUrl: string | null;
-      provider: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null;
+    id: number;
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null;
+    provider: string;
+    createdAt: string;
+    updatedAt: string;
   };
 }
 
