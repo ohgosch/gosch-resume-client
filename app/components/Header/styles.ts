@@ -67,6 +67,10 @@ export const Title = styled.h1`
       font-size: ${rem(42)};
       max-width: ${rem(300)};
     `)}
+
+    ${print(css`
+      max-width: ${rem(350)};
+    `)}
   `}
 `;
 

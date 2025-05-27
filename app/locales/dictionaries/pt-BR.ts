@@ -7,7 +7,7 @@ export default {
     'cover-letter': 'Apresentação',
     skills: 'Habilidades',
     experiences: 'Experiências',
-    courses: 'Cursos',
+    courses: 'Educação',
     period: 'Período',
     role: 'Cargo',
     'see-updated-content': 'Tenha acesso ao currículo atualizado em {url}',

@@ -13,15 +13,16 @@ export const GlobalStyle = createGlobalStyle`
     body,
     html {
       color: ${theme.colors.black};
-      font-family: 'Rufina', serif;
       background-color: ${theme.colors.white};
 
       ${notPrint(css`
         min-height: 100vh;
+        font-family: 'Rufina', serif;
       `)}
 
       ${print(css`
         font-size: ${rem(12)};
+        font-family: serif;
       `)}
     }
 
@@ -45,7 +46,14 @@ export const GlobalStyle = createGlobalStyle`
     button {
       cursor: pointer;
       border: none;
-      font-family: 'Rufina', serif;
+
+      ${notPrint(css`
+        font-family: 'Rufina', serif;
+      `)}
+
+      ${print(css`
+        font-family: serif;
+      `)}
     }
 
     img {

@@ -7,7 +7,7 @@ export default {
     'cover-letter': 'Cover Letter',
     skills: 'Skills',
     experiences: 'Experiences',
-    courses: 'Courses',
+    courses: 'Education',
     period: 'Period',
     role: 'Role',
     'see-updated-content': 'For the updated resume, you can access {url}',
