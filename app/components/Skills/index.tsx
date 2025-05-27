@@ -10,7 +10,7 @@ const Skills = async () => {
   /*
    * Store's
    * */
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   /*
    * Request's
@@ -20,18 +20,19 @@ const Skills = async () => {
   /*
    * Data's
    * */
-  const skills: ISkill[] = data?.data?.attributes.skills.data;
+  const skills: ISkill[] = data?.data?.skills;
 
-  const groups: ISkillCategoryGroup[] =
-    data?.data?.attributes.skill_categories.data.map((category) => ({
+  const groups: ISkillCategoryGroup[] = data?.data?.skill_categories.map(
+    (category) => ({
       ...category,
       skills: skills.filter(
-        (skill) => skill.attributes.skill_category.data?.id === category.id,
+        (skill) => skill.skill_category?.documentId === category.documentId,
       ),
-    }));
+    }),
+  );
 
   const ungroupedSkills = skills.filter(
-    (skill) => !skill.attributes.skill_category.data?.id,
+    (skill) => !skill.skill_category?.documentId,
   );
 
   return (
@@ -39,14 +40,14 @@ const Skills = async () => {
       {groups.map((group) => (
         <SkillGroup
           skills={group.skills}
-          title={group.attributes.name}
-          key={group.id}
+          title={group.name}
+          key={group.documentId}
         />
       ))}
       <S.UngroupedSkills>
-        {ungroupedSkills.map(({ id, attributes }) => (
-          <Chip as="li" key={id}>
-            {attributes.name}
+        {ungroupedSkills.map(({ name, documentId }) => (
+          <Chip as="li" key={documentId}>
+            {name}
           </Chip>
         ))}
       </S.UngroupedSkills>

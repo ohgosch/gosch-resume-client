@@ -17,15 +17,9 @@ export interface IApiResponse<T> {
 }
 
 export interface ISkillSectionResponse {
-  id: number;
-  attributes: {
-    createdAt: string;
-    updatedAt: string;
-    skills: {
-      data: ISkill[];
-    };
-    skill_categories: {
-      data: ISkillCategory[];
-    };
-  };
+  documentId: string;
+  createdAt: string;
+  updatedAt: string;
+  skills: ISkill[];
+  skill_categories: ISkillCategory[];
 }

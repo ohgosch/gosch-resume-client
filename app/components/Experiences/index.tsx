@@ -11,7 +11,7 @@ const Experiences = async () => {
   /*
    * Store's
    * */
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   /*
    * Request's
@@ -25,41 +25,32 @@ const Experiences = async () => {
   return (
     <S.Container>
       {experiences.map((experience) => (
-        <S.Experience key={experience.attributes.slug}>
+        <S.Experience key={experience.slug}>
           <S.Header>
             <S.HeaderContent>
-              <Heading2>{experience.attributes.company}</Heading2>
+              <Heading2>{experience.company}</Heading2>
               <S.Date aria-label={t('period')}>
-                {formatDate(
-                  parseISO(experience.attributes.startDate),
-                  'MMM/yyyy',
-                  locale,
-                )}
-                {!!experience.attributes.endDate &&
+                {formatDate(parseISO(experience.startDate), 'MMM/yyyy', locale)}
+                {!!experience.endDate &&
                   ` - ${formatDate(
-                    parseISO(experience.attributes.endDate),
+                    parseISO(experience.endDate),
                     'MMM/yyyy',
                     locale,
                   )}`}
               </S.Date>
             </S.HeaderContent>
-            <S.Role aria-label={t('role')}>{experience.attributes.role}</S.Role>
+            <S.Role aria-label={t('role')}>{experience.role}</S.Role>
           </S.Header>
-          <S.LogoWrapper aria-hidden $small={!experience.attributes.logo.data}>
-            {!!experience.attributes.logo.data?.attributes.url && (
+          <S.LogoWrapper aria-hidden $small={!experience.logo}>
+            {!!experience.logo?.url && (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={formatStaticURL(
-                  experience.attributes.logo.data.attributes.url,
-                )}
-                alt={
-                  experience.attributes.logo.data.attributes.alternativeText ??
-                  ''
-                }
+                src={formatStaticURL(experience.logo.url)}
+                alt={experience.logo.alternativeText ?? ''}
               />
             )}
           </S.LogoWrapper>
-          <S.Description>{experience.attributes.description}</S.Description>
+          <S.Description>{experience.description}</S.Description>
         </S.Experience>
       ))}
     </S.Container>
