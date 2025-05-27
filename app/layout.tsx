@@ -5,7 +5,7 @@ import { type PropsWithChildren } from 'react';
 import { Contexts } from 'utils/contexts';
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const locale = getCurrentLocale() || i18n;
+  const locale = getCurrentLocale() || i18n.defaultLocale;
 
   setStaticParamsLocale(locale);
 
