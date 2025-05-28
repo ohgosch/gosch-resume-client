@@ -1,6 +1,6 @@
 'use client';
 
-import { mobile, tabletDesktop } from 'lib/visual/medias';
+import { mobile, print, tabletDesktop } from 'lib/visual/medias';
 import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -25,6 +25,10 @@ export const Container = styled.section<
   
     ${tabletDesktop(css`
       gap: ${rem(50)};
+    `)}
+    
+    ${print(css`
+      gap: ${rem(24)};
     `)}
   `}
 `;

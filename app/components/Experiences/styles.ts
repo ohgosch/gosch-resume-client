@@ -4,11 +4,12 @@ import {
   desktop,
   mobile,
   mobileTablet,
+  notPrint,
   print,
   tablet,
   tabletDesktop,
 } from 'lib/visual/medias';
-import { Paragraph } from 'lib/visual/styles/Texts';
+import { Paragraph, ParagraphStyle } from 'lib/visual/styles/Texts';
 import { rem, size } from 'polished';
 import styled, { css } from 'styled-components';
 
@@ -192,9 +193,32 @@ export const LogoWrapper = styled.div<LogoWrapperProps>`
   `}
 `;
 
-export const Description = styled(Paragraph)`
+export const DescriptionWrap = styled.div`
   ${mobileTablet(css`
     order: 3;
     grid-column: 2;
   `)}
+`;
+
+export const Description = styled(Paragraph)``;
+
+export const DescriptionRich = styled.div`
+  p,
+  li {
+    ${ParagraphStyle};
+  }
+
+  li:not(:last-of-type) {
+    ${print(css`
+      margin-bottom: ${rem(4)};
+    `)}
+
+    ${notPrint(css`
+      margin-bottom: ${rem(8)};
+    `)}
+  }
+
+  strong {
+    font-weight: 900;
+  }
 `;
