@@ -1,3 +1,4 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { parseISO } from 'date-fns';
 import { getExperiences } from 'lib/logic/services/resume.service';
 import { Heading2 } from 'lib/visual/styles/Texts';
@@ -50,7 +51,15 @@ const Experiences = async () => {
               />
             )}
           </S.LogoWrapper>
-          <S.Description>{experience.description}</S.Description>
+          <S.DescriptionWrap>
+            {experience?.description_rich ? (
+              <S.DescriptionRich>
+                <BlocksRenderer content={experience.description_rich} />
+              </S.DescriptionRich>
+            ) : (
+              <S.Description>{experience.description}</S.Description>
+            )}
+          </S.DescriptionWrap>
         </S.Experience>
       ))}
     </S.Container>

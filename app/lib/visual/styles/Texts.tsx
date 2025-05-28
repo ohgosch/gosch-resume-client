@@ -22,6 +22,11 @@ export const Heading1 = styled.h2`
       font-size: ${rem(36)};
       line-height: ${rem(44)};
     `)}
+
+    ${print(css`
+      font-size: ${rem(36)};
+      line-height: ${rem(44)};
+    `)}
   `}
 `;
 
@@ -44,6 +49,7 @@ export const Heading2 = styled.h3`
     `)}
   `}
 `;
+
 export const ParagraphStyle = css`
   ${({ theme }) => css`
     font-style: normal;
@@ -59,13 +65,14 @@ export const ParagraphStyle = css`
       font-size: ${rem(18)};
       line-height: ${rem(22)};
     `)}
+
+    ${print(css`
+      font-size: ${rem(18)};
+      line-height: ${rem(25)};
+    `)}
   `}
 `;
 
 export const Paragraph = styled.p`
   ${ParagraphStyle}
-
-  ${print(css`
-    font-size: ${rem(20)};
-  `)}
 `;

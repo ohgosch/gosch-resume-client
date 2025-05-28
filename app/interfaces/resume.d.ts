@@ -18,6 +18,7 @@ export interface IExperience {
   startDate: string;
   endDate: string;
   description: string;
+  description_rich?: BlocksContent;
   modality: 'remote' | 'partial-remote' | 'on-site';
   createdAt: string;
   updatedAt: string;

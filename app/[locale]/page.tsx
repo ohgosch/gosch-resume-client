@@ -62,17 +62,17 @@ export default async function Page(props: Props) {
               <CoverLetter />
             </Wrapper>
           </Section>
-          <Section name={t('skills')} id="skills" $isBreakPrintBefore>
+          <Section name={t('skills')} id="skills">
             <Wrapper>
               <Skills />
             </Wrapper>
           </Section>
-          <Section name={t('experiences')} id="experiences">
+          <Section name={t('experiences')} id="experiences" $isBreakPrintBefore>
             <Wrapper>
               <Experiences />
             </Wrapper>
           </Section>
-          <Section name={t('courses')} id="courses" $isBreakPrintBefore>
+          <Section name={t('courses')} id="courses">
             <Wrapper $middle>
               <Courses />
             </Wrapper>
