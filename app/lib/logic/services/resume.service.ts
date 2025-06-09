@@ -38,7 +38,8 @@ export const getCoverLetter = async (locale: TLocale) =>
 export const getExperiences = async (locale: TLocale) =>
   await privateApi<IPaginateApiResponse<IExperience[]>>(`/experiences`, {
     params: {
-      populate: 'logo',
+      'populate[0]': 'logo',
+      'populate[1]': 'skills',
       sort: 'startDate:DESC',
       locale,
     },

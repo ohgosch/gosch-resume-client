@@ -1,5 +1,5 @@
+import { Skill } from 'components/Skills/styles';
 import { type ISkill } from 'interfaces/resume';
-import { Chip } from 'lib/visual/styles/Chip';
 
 import * as S from './styles';
 
@@ -14,9 +14,7 @@ const SkillGroup = ({ title, skills }: ISkillGroupProps) => {
       <S.Title>{title}</S.Title>
       <S.Skills>
         {skills.map(({ documentId, name }) => (
-          <Chip as="li" key={documentId}>
-            {name}
-          </Chip>
+          <Skill key={documentId}>{name}</Skill>
         ))}
       </S.Skills>
     </S.ContainerSkillGroup>

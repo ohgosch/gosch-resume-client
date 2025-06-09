@@ -29,6 +29,10 @@ export const Container = styled.div`
     gap: ${rem(64)};
   `)}
 
+  ${print(css`
+    gap: ${rem(32)};
+  `)}
+
   ${desktop(css`
     align-items: center;
   `)}
@@ -124,6 +128,11 @@ export const Date = styled.span`
       font-size: ${rem(16)};
       line-height: ${rem(20)};
     `)}
+
+    ${print(css`
+      font-size: ${rem(20)};
+      line-height: ${rem(25)};
+    `)}
   `}
 `;
 
@@ -149,6 +158,47 @@ export const Role = styled.span`
     
     ${mobileTablet(css`
       order: 1;
+    `)}
+  `}
+`;
+
+export const Skills = styled.ul`
+  display: flex;
+  gap: ${rem(2)};
+  flex-wrap: wrap;
+  list-style-type: none;
+  max-width: 500px;
+
+  ${desktop(css`
+    justify-content: flex-end;
+    max-width: 250px;
+  `)}
+
+  ${mobileTablet(css`
+    justify-content: flex-start;
+    order: 2;
+  `)}
+`;
+
+export const Skill = styled.li`
+  ${({ theme }) => css`
+    font-style: normal;
+    font-weight: 400;
+    color: ${theme.colors.primary};
+    border-radius: ${rem(5)};
+    cursor: default;
+    background-color: ${theme.colors.secondary};
+
+    ${tabletDesktop(css`
+      font-size: ${rem(12)};
+      line-height: ${rem(15)};
+      padding: ${rem(4)} ${rem(8)};
+    `)}
+
+    ${mobile(css`
+      font-size: ${rem(12)};
+      line-height: ${rem(15)};
+      padding: ${rem(4)} ${rem(8)};
     `)}
   `}
 `;

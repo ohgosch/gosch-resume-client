@@ -41,6 +41,13 @@ const Experiences = async () => {
               </S.Date>
             </S.HeaderContent>
             <S.Role aria-label={t('role')}>{experience.role}</S.Role>
+            {!!experience.skills.length && (
+              <S.Skills>
+                {experience.skills.map(({ name, documentId }) => (
+                  <S.Skill key={documentId}>{name}</S.Skill>
+                ))}
+              </S.Skills>
+            )}
           </S.Header>
           <S.LogoWrapper aria-hidden $small={!experience.logo}>
             {!!experience.logo?.url && (

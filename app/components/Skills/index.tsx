@@ -1,6 +1,5 @@
 import { type ISkill, type ISkillCategoryGroup } from 'interfaces/resume';
 import { getSkillsSection } from 'lib/logic/services/resume.service';
-import { Chip } from 'lib/visual/styles/Chip';
 import { getCurrentLocale } from 'locales/server';
 
 import SkillGroup from '../SkillGroup';
@@ -46,9 +45,9 @@ const Skills = async () => {
       ))}
       <S.UngroupedSkills>
         {ungroupedSkills.map(({ name, documentId }) => (
-          <Chip as="li" key={documentId}>
+          <S.Skill as="li" key={documentId}>
             {name}
-          </Chip>
+          </S.Skill>
         ))}
       </S.UngroupedSkills>
     </S.Container>

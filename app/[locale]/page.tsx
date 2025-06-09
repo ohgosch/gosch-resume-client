@@ -66,7 +66,7 @@ export default async function Page(props: Props) {
               <Skills />
             </Wrapper>
           </Section>
-          <Section name={t('courses')} id="education" $isBreakPrintBefore>
+          <Section name={t('courses')} id="education">
             <Wrapper $middle>
               <Courses />
             </Wrapper>
