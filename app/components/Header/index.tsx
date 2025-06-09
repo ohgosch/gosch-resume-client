@@ -48,7 +48,7 @@ const Header = ({ forceBorder, skeleton }: HeaderProps) => {
                 target="_blank"
                 title="Linked-in"
               >
-                @{skeleton?.linkedin}
+                linkedin.com/in/{skeleton?.linkedin}
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>
@@ -60,7 +60,7 @@ const Header = ({ forceBorder, skeleton }: HeaderProps) => {
                 target="_blank"
                 title="GitHub"
               >
-                @{skeleton?.github}
+                github.com/{skeleton?.github}
               </S.MenuItemText>
             </S.MenuItemIconWrapper>
           </S.MenuItem>

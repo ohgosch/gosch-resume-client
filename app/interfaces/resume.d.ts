@@ -42,6 +42,7 @@ export interface IExperience {
     createdAt: string;
     updatedAt: string;
   };
+  skills: Omit<ISkill, 'skill_category'>[];
 }
 
 export interface ICourse {

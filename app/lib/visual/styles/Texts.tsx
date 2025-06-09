@@ -47,6 +47,11 @@ export const Heading2 = styled.h3`
       font-size: ${rem(24)};
       line-height: ${rem(30)};
     `)}
+
+    ${print(css`
+      font-size: ${rem(28)};
+      line-height: ${rem(35)};
+    `)}
   `}
 `;
 
