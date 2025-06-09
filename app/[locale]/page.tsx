@@ -1,5 +1,4 @@
 import Courses from 'components/Courses';
-import CoverLetter from 'components/CoverLetter';
 import Experiences from 'components/Experiences';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
@@ -57,9 +56,9 @@ export default async function Page(props: Props) {
       <S.Container>
         <Navbar />
         <S.Content>
-          <Section name={t('cover-letter')} id="cover-letter">
-            <Wrapper $middle>
-              <CoverLetter />
+          <Section name={t('experiences')} id="experiences">
+            <Wrapper>
+              <Experiences />
             </Wrapper>
           </Section>
           <Section name={t('skills')} id="skills">
@@ -67,12 +66,7 @@ export default async function Page(props: Props) {
               <Skills />
             </Wrapper>
           </Section>
-          <Section name={t('experiences')} id="experiences" $isBreakPrintBefore>
-            <Wrapper>
-              <Experiences />
-            </Wrapper>
-          </Section>
-          <Section name={t('courses')} id="courses">
+          <Section name={t('courses')} id="education" $isBreakPrintBefore>
             <Wrapper $middle>
               <Courses />
             </Wrapper>

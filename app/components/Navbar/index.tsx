@@ -10,10 +10,9 @@ const Navbar = async () => {
 
   return (
     <S.Container>
-      <S.MenuItem href="#cover-letter">{t('cover-letter')}</S.MenuItem>
-      <S.MenuItem href="#skills">{t('skills')}</S.MenuItem>
       <S.MenuItem href="#experiences">{t('experiences')}</S.MenuItem>
-      <S.MenuItem href="#courses">{t('courses')}</S.MenuItem>
+      <S.MenuItem href="#skills">{t('skills')}</S.MenuItem>
+      <S.MenuItem href="#education">{t('courses')}</S.MenuItem>
       <S.MenuItem as="p">
         {t('see-updated-content', {
           url: (
