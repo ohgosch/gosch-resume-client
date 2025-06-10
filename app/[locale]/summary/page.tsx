@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
   return await getMetadata({
-    pageTitle: t('common.cover-letter'),
+    pageTitle: t('common.summary'),
     locale,
   });
 }
@@ -52,7 +52,7 @@ export default async function Page(props: Props) {
       <Header skeleton={skeleton} forceBorder />
       <S.Container>
         <S.Content>
-          <Section name={t('cover-letter')} id="cover-letter">
+          <Section name={t('summary')} id="summary">
             <Wrapper $middle>
               <CoverLetter />
             </Wrapper>

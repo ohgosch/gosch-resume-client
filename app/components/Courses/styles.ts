@@ -14,6 +14,10 @@ export const Container = styled.div`
   ${mobile(css`
     grid-gap: ${rem(16)};
   `)}
+
+  ${print(css`
+    grid-gap: ${rem(24)};
+  `)}
 `;
 
 export const CourseContent = styled.div`
@@ -91,6 +95,10 @@ export const CourseContent = styled.div`
     `)}
 
     ${mobile(css`
+      padding: ${rem(16)} ${rem(24)};
+    `)}
+
+    ${print(css`
       padding: ${rem(16)} ${rem(24)};
     `)}
   `}
