@@ -30,6 +30,10 @@ export const Container = styled.footer`
       width: ${rem(36)};
     }
   `)}
+
+  ${print(css`
+    display: none;
+  `)}
 `;
 
 export const Text = styled.p`

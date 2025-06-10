@@ -4,7 +4,7 @@ export default {
     resume: 'Resume',
     description:
       'Developing web solutions, aiming at greater accessibility and performance of applications.',
-    'cover-letter': 'Cover Letter',
+    summary: 'Professional Summary',
     skills: 'Skills',
     experiences: 'Experiences',
     courses: 'Education',

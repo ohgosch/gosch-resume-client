@@ -4,7 +4,7 @@ import { type PropsWithChildren } from 'react';
 import * as S from './styles';
 
 export interface SectionProps extends PropsWithChildren {
-  name: string;
+  name?: string;
   id: string;
   $isBreakPrintBefore?: boolean;
 }
@@ -17,7 +17,7 @@ const Section = async ({
 }: SectionProps) => {
   return (
     <S.Container id={id} $isBreakPrintBefore={$isBreakPrintBefore}>
-      <Heading1>{name}</Heading1>
+      {!!name && <Heading1>{name}</Heading1>}
       <S.Content>{children}</S.Content>
     </S.Container>
   );

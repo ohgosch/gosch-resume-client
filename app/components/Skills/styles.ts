@@ -85,5 +85,9 @@ export const Container = styled.div`
     ${mobile(css`
       gap: ${rem(24)};
     `)}
+
+    ${print(css`
+      gap: ${rem(16)};
+    `)}
   `}
 `;
