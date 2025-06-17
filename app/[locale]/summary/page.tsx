@@ -49,7 +49,7 @@ export default async function Page(props: Props) {
 
   return (
     <>
-      <Header skeleton={skeleton} forceBorder />
+      <Header skeleton={skeleton} $forceBorder />
       <S.Container>
         <S.Content>
           <Section name={t('summary')} id="summary">
