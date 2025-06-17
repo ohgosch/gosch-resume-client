@@ -3,7 +3,7 @@ export default {
     name: 'Ricardo Gosch dos Santos',
     resume: 'Currículo',
     description:
-      'Desenvolvendo soluções web, visando maior acessibilidade e desempenho das aplicações.',
+      'Arquiteto de Software com mais de 8 anos de experiência na concepção e desenvolvimento de aplicações web escaláveis e sistemas distribuídos.',
     summary: 'Resumo Profissional',
     skills: 'Habilidades',
     experiences: 'Experiências',

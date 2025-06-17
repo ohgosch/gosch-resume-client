@@ -3,7 +3,7 @@ export default {
     name: 'Ricardo Gosch dos Santos',
     resume: 'Resume',
     description:
-      'Developing web solutions, aiming at greater accessibility and performance of applications.',
+      'Software Architect with over 8 years of experience designing and building scalable, maintainable web applications and distributed systems.',
     summary: 'Professional Summary',
     skills: 'Skills',
     experiences: 'Experiences',
