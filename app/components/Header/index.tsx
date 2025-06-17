@@ -13,11 +13,11 @@ import { formatPhone } from 'utils/format';
 import * as S from './styles';
 
 export interface HeaderProps {
-  forceBorder?: boolean;
+  $forceBorder?: boolean;
   skeleton: ISkeleton;
 }
 
-const Header = ({ forceBorder, skeleton }: HeaderProps) => {
+const Header = ({ $forceBorder, skeleton }: HeaderProps) => {
   /*
    * Store's
    * */
@@ -33,7 +33,7 @@ const Header = ({ forceBorder, skeleton }: HeaderProps) => {
   );
 
   return (
-    <S.Container forceBorder={forceBorder}>
+    <S.Container $forceBorder={$forceBorder}>
       <S.Content>
         <S.TitleWrapper>
           <S.Title>{t('common.name')}</S.Title>
