@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+@layer components {
+  .section-title {
+    @apply text-xl font-bold uppercase flex gap-1 before:w-1 before:bg-neutral-800;
+  }
+
+  .section {
+    @apply flex flex-col gap-4;
+  }
+
+  .tag {
+    @apply text-xs flex px-1 py-0.5 border text-neutral-500 rounded-sm;
+  }
+}
