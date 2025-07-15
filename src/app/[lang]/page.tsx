@@ -1,6 +1,39 @@
 import { Header } from '@/components/Header';
+import { TLang } from '@/locales/i18n.config';
+import { setStaticParamsLocale } from 'next-international/server';
+import { getStaticParams } from '@/locales/server';
 
-export default async function Home() {
+export function generateStaticParams() {
+  return getStaticParams();
+}
+
+interface Props {
+  params: Promise<{ lang: TLang }>;
+}
+
+export default async function Page(props: Props) {
+  const params = await props.params;
+  /*
+   * Store's
+   * */
+  const { lang } = params;
+  setStaticParamsLocale(lang);
+
+  /*
+   * State's
+   * */
+
+  /*
+   * Memo's
+   * */
+
+  /*
+   * Callback's
+   * */
+
+  /*
+   * Effect's
+   * */
   return (
     <div className="w-11/12 max-w-4xl m-auto py-8 flex flex-col gap-8">
       <Header />
