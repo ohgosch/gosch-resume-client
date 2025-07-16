@@ -1,7 +1,35 @@
 import { Header } from '@/components/Header';
 import { TLang } from '@/locales/i18n.config';
 import { setStaticParamsLocale } from 'next-international/server';
-import { getStaticParams } from '@/locales/server';
+import { getI18n, getStaticParams } from '@/locales/server';
+import {
+  getCourses,
+  getCoverLetter,
+  getExperiences,
+  getSkeleton,
+  getSkillsSection,
+} from '@/services/resume.service';
+import { formatDate, formatPhone } from '@/utils/format';
+import { RichText } from '@/components/RichText';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+
+  const skeleton = (await getSkeleton(lang)).data;
+
+  return {
+    title: `${skeleton.name} - ${skeleton.title}`,
+    description: skeleton.description,
+    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_URL}`),
+    alternates: {
+      languages: {
+        'pt-BR': '/pt-BR',
+        'en-US': '/en-US',
+      },
+    },
+  };
+}
 
 export function generateStaticParams() {
   return getStaticParams();
@@ -18,143 +46,149 @@ export default async function Page(props: Props) {
    * */
   const { lang } = params;
   setStaticParamsLocale(lang);
+  const t = await getI18n();
 
   /*
-   * State's
+   * Request's
    * */
+  const [skeleton, coverLetter, courses, experiences, skills] =
+    await Promise.all([
+      getSkeleton(lang),
+      getCoverLetter(lang),
+      getCourses(lang),
+      getExperiences(lang),
+      getSkillsSection(lang),
+    ]);
 
   /*
-   * Memo's
+   * Variable's
    * */
+  const phoneMasked = formatPhone(skeleton?.data.phone);
+  const experiencesRest =
+    experiences.meta.pagination.total - experiences.meta.pagination.pageSize;
 
-  /*
-   * Callback's
-   * */
-
-  /*
-   * Effect's
-   * */
   return (
     <div className="w-11/12 max-w-4xl m-auto py-8 flex flex-col gap-8">
-      <Header />
+      <Header data={skeleton.data} />
       <ul className="flex justify-between text-base">
         <li>
-          <a href="#">lorem@ipsum.com</a>
+          <a target="_blank" href={`mailto:${skeleton.data.email}`}>
+            {skeleton.data.email}
+          </a>
         </li>
         <div className="w-0.5 bg-neutral-800 block" />
         <li>
-          <a href="#">+00 000 00000-0000</a>
+          <a target="_blank" href={`tel:${skeleton?.data.phone}`}>
+            {phoneMasked}
+          </a>
         </li>
         <div className="w-0.5 bg-neutral-800 block" />
         <li>
-          <a href="#">linkedin.com/in/username</a>
+          <a
+            target="_blank"
+            href={`https://www.linkedin.com/in/${skeleton.data.linkedin}`}
+          >
+            linkedin.com/in/{skeleton.data.linkedin}
+          </a>
         </li>
         <div className="w-0.5 bg-neutral-800 block" />
         <li>
-          <a href="#">github.com/username</a>
+          <a
+            target="_blank"
+            href={`https://github.com/${skeleton.data.github}`}
+          >
+            github.com/{skeleton.data.github}
+          </a>
         </li>
       </ul>
       <main className="flex flex-col gap-8">
-        <section>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
-            dolore laboriosam minus officia sequi sit tempore voluptatibus?
-            Asperiores autem cumque deleniti dolores error est eum inventore
-            ipsum, itaque libero mollitia natus, omnis porro quaerat quod, quos
-            sint totam veritatis! A ad amet at beatae cum cumque fuga ipsum iste
-            nihil nobis non quibusdam ratione sequi suscipit temporibus, tenetur
-            veniam. Accusamus accusantium aliquam architecto aut beatae dolorum
-            exercitationem facilis, incidunt, labore laboriosam non nostrum,
-            numquam odit placeat praesentium quas qui recusandae repudiandae
-            saepe sed ullam vero voluptatem voluptatum! Accusantium aspernatur
-            dolorum harum impedit maxime provident quidem repellendus
-            reprehenderit, temporibus unde vero.
-          </p>
+        <section className="rich-container text-justify">
+          <RichText content={coverLetter.data.coverLetterContent} />
         </section>
         <section className="section">
-          <h2 className="section-title">Experiences</h2>
+          <h2 className="section-title">{t('experiences')}</h2>
           <div className="grid gap-4">
-            <article className="grid gap-3">
-              <header className="flex justify-between">
-                <div className="grid">
-                  <h3 className="text-lg font-bold">
-                    Senior Front-end Developer
-                    <span className="font-normal">, Compass UOL</span>
-                  </h3>
-                  <span className=" text-xs text-neutral-500">
-                    react • typescript • micro front-end • storybook • vite •
-                    bff • ci/cd
-                  </span>
-                </div>
-                <div className="grid">
-                  <span className="text-right whitespace-nowrap">
-                    2020 january - 2020 december
-                  </span>
-                  <span className="text-right whitespace-nowrap text-xs text-neutral-500">
-                    remote, brazil
-                  </span>
-                </div>
-              </header>
-              <main className="text-base">
-                <ul className="list-disc list-inside">
-                  <li>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ab, quo!
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ab, quo!
-                  </li>
-                  <li>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ab, quo!
-                  </li>
-                </ul>
-              </main>
-            </article>
+            {experiences.data.map((experience) => (
+              <article className="grid gap-3" key={experience.documentId}>
+                <header className="flex justify-between">
+                  <div className="grid">
+                    <h3 className="text-lg font-bold">
+                      {experience.role}
+                      <span className="font-normal">
+                        , {experience.company}
+                      </span>
+                    </h3>
+                    <span className=" text-xs text-neutral-500 lowercase">
+                      {experience.skills.map((skill) => skill.name).join(' • ')}
+                    </span>
+                  </div>
+                  <div className="grid">
+                    <span className="text-right whitespace-nowrap lowercase">
+                      {formatDate(experience.startDate, lang)} -{' '}
+                      {formatDate(experience.endDate, lang) ?? t('current')}
+                    </span>
+                    <span className="text-right whitespace-nowrap text-xs text-neutral-500 lowercase">
+                      {t(`modality.${experience.modality}`)}, brazil
+                    </span>
+                  </div>
+                </header>
+                <main className="rich-container">
+                  {!!experience.description_rich && (
+                    <RichText content={experience.description_rich} />
+                  )}
+                </main>
+              </article>
+            ))}
 
-            <p className="text-base underline">+4 experiences</p>
+            {experiencesRest >= 1 && (
+              <a
+                href={`https://www.linkedin.com/in/${skeleton.data.linkedin}`}
+                target="_blank"
+                className="text-base underline"
+              >
+                {t('moreExperiences', { quantity: experiencesRest })}
+              </a>
+            )}
           </div>
         </section>
         <section className="section">
-          <h2 className="section-title">Education</h2>
+          <h2 className="section-title">{t('education')}</h2>
           <div className="grid gap-4">
-            <article className="grid gap-3">
-              <header className="flex justify-between">
-                <div className="grid">
-                  <h3 className="text-lg font-bold">
-                    Technician, IT
-                    <span className="font-normal">, PUCRS</span>
-                  </h3>
-                  <span className="whitespace-nowrap">
-                    2020 january - 2020 december
-                  </span>
-                </div>
-              </header>
-            </article>
+            {courses.data.map((course) => (
+              <article className="grid gap-3" key={course.documentId}>
+                <header className="flex justify-between">
+                  <div className="grid">
+                    <h3 className="text-lg font-bold">
+                      {course.description}
+                      <span className="font-normal">
+                        , {course.institution}
+                      </span>
+                    </h3>
+                    <span className="whitespace-nowrap lowercase">
+                      {formatDate(course.startDate, lang)} -{' '}
+                      {formatDate(course.endDate, lang) ?? t('current')}
+                    </span>
+                  </div>
+                </header>
+              </article>
+            ))}
           </div>
         </section>
         <section className="section">
-          <h2 className="section-title">Skills</h2>
+          <h2 className="section-title">{t('skills')}</h2>
           <ul className="flex flex-wrap gap-1">
-            <li className="tag">React</li>
-            <li className="tag">React</li>
-            <li className="tag">React</li>
-            <li className="tag">React</li>
-            <li className="tag">React</li>
-            <li className="tag">React</li>
+            {skills.data.skills.map((skill) => (
+              <li className="tag" key={skill.documentId}>
+                {skill.name}
+              </li>
+            ))}
           </ul>
         </section>
         <section className="section">
-          <h2 className="section-title">Languages</h2>
-          <ul className="list-disc list-inside">
-            <li className="text-base">
-              <strong>English:</strong> intermediate
-            </li>
-            <li className="text-base">
-              <strong>English:</strong> intermediate
-            </li>
-          </ul>
+          <h2 className="section-title">{t('languages')}</h2>
+          <div className="rich-container">
+            <RichText content={skeleton.data.languages} />
+          </div>
         </section>
       </main>
     </div>

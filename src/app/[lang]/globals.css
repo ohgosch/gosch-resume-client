@@ -12,4 +12,12 @@
   .tag {
     @apply text-xs flex px-1 py-0.5 border text-neutral-500 rounded-sm;
   }
+
+  .rich-container {
+    @apply text-base;
+  }
+
+  .rich-container ul {
+    @apply list-disc list-inside;
+  }
 }
