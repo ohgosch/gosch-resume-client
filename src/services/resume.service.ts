@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { TLang } from '@/locales/i18n.config';
 import { IApiResponse, IPaginateApiResponse } from '@/interfaces/api';
 import {
