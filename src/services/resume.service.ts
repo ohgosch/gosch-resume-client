@@ -1,13 +1,3 @@
-import { TLang } from '@/locales/i18n.config';
-import { IApiResponse, IPaginateApiResponse } from '@/interfaces/api';
-import {
-  ICourse,
-  ICoverLetter,
-  IExperience,
-  ISkeleton,
-  ISkillSectionResponse,
-} from '@/interfaces/resume';
-
 // export const getSkeleton = async (
 //   locale: TLang,
 // ): Promise<IApiResponse<ISkeleton>> => {
