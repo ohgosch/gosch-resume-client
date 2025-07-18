@@ -1,22 +1,22 @@
 import { match } from '@formatjs/intl-localematcher';
-import { i18n, type TLang } from '@/locales/i18n.config';
+import { i18n, type TLocale } from '@/locales/i18n.config';
 import { type NextRequest } from 'next/server';
 import { createI18nMiddleware } from 'next-international/middleware';
 
-function resolveLocaleFromRequest(request: NextRequest): TLang {
+function resolveLocaleFromRequest(request: NextRequest): TLocale {
   const acceptLanguages = String(request.headers.get('accept-language')).split(
     ',',
   );
 
   const acceptLanguagesFiltered = acceptLanguages.filter((language) =>
-    i18n.locales.includes(language as TLang),
+    i18n.locales.includes(language as TLocale),
   );
 
   return match(
     acceptLanguagesFiltered,
     i18n.locales,
     i18n.defaultLocale,
-  ) as TLang;
+  ) as TLocale;
 }
 
 const I18nMiddleware = createI18nMiddleware({

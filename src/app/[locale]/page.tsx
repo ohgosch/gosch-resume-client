@@ -1,5 +1,5 @@
 import { Header } from '@/components/Header';
-import { TLang } from '@/locales/i18n.config';
+import { TLocale } from '@/locales/i18n.config';
 import { setStaticParamsLocale } from 'next-international/server';
 import { getI18n, getStaticParams } from '@/locales/server';
 import { formatPhone } from '@/utils/format';
@@ -7,11 +7,11 @@ import { RichText } from '@/components/RichText';
 import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
+  const { locale } = await params;
 
   // const skeleton = (await getSkeleton(lang)).data;
   const skeletonResponse = await fetch(
-    `${process.env.API_HOST}/api/skeleton?locale=${lang}`,
+    `${process.env.API_HOST}/api/skeleton?locale=${locale}`,
     config,
   );
 
@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  return getStaticParams().map((page) => ({ lang: page.locale }));
+  return getStaticParams();
 }
 
 interface Props {
-  params: Promise<{ lang: TLang }>;
+  params: Promise<{ locale: TLocale }>;
 }
 
 const config: RequestInit = {
@@ -52,8 +52,8 @@ export default async function Page(props: Props) {
    * Store's
    * */
   console.log('NUMERO 2');
-  const { lang } = params;
-  setStaticParamsLocale(lang);
+  const { locale } = params;
+  setStaticParamsLocale(locale);
   console.log('NUMERO 3');
   const t = await getI18n();
 
@@ -64,13 +64,13 @@ export default async function Page(props: Props) {
   console.log('process.env.API_HOST', `${process.env.API_HOST}`);
   console.log(
     'REQUEST URL',
-    `${process.env.API_HOST}/api/skeleton?locale=${lang}`,
+    `${process.env.API_HOST}/api/skeleton?locale=${locale}`,
   );
   console.log('JSON.stringify(config)', JSON.stringify(config));
 
   console.log('NUMERO 5');
   const skeletonResponse = await fetch(
-    `${process.env.API_HOST}/api/skeleton?locale=${lang}`,
+    `${process.env.API_HOST}/api/skeleton?locale=${locale}`,
     config,
   );
   console.log('skeletonResponse', JSON.stringify(skeletonResponse));

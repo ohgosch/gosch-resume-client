@@ -3,4 +3,4 @@ export const i18n = {
   locales: ['en-US', 'pt-BR'],
 } as const;
 
-export type TLang = (typeof i18n)['locales'][number];
+export type TLocale = (typeof i18n)['locales'][number];

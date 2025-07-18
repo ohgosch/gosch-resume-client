@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { TLang } from '@/locales/i18n.config';
+import { TLocale } from '@/locales/i18n.config';
 import React, { PropsWithChildren } from 'react';
 import { I18nProviderClient } from '@/locales/client';
 
@@ -11,19 +11,19 @@ export const metadata: Metadata = {
 
 export default function Layout(
   props: {
-    params: Promise<{ lang: TLang }>;
+    params: Promise<{ locale: TLocale }>;
   } & PropsWithChildren,
 ) {
   const params = React.use(props.params);
 
-  const { lang } = params;
+  const { locale } = params;
 
   const { children } = props;
 
   return (
-    <html lang={lang.split('-')[0]} suppressHydrationWarning>
+    <html lang={locale.split('-')[0]} suppressHydrationWarning>
       <body className="bg-neutral-50 text-neutral-800 font-serif cursor-default">
-        <I18nProviderClient locale={lang}>{children}</I18nProviderClient>
+        <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
       </body>
     </html>
   );
