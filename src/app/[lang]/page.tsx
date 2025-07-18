@@ -54,8 +54,6 @@ export default async function Page(props: Props) {
   setStaticParamsLocale(lang);
   const t = await getI18n();
 
-  console.log(JSON.stringify(config));
-
   /*
    * Request's
    * */
@@ -63,6 +61,13 @@ export default async function Page(props: Props) {
     `${process.env.API_HOST}/api/skeleton?locale=${lang}`,
     config,
   );
+
+  console.log('process.env.API_HOST', `${process.env.API_HOST}`);
+  console.log(
+    'REQUEST URL',
+    `${process.env.API_HOST}/api/skeleton?locale=${lang}`,
+  );
+  console.log('JSON.stringify(config)', JSON.stringify(config));
 
   const skeleton = await skeletonResponse.json();
 
