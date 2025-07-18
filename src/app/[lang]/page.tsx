@@ -17,16 +17,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
 
   const skeleton = (await getSkeleton(lang)).data;
+  const title = `${skeleton.name} - ${skeleton.title}`;
+  const images = `/img/seo/card_${lang}.png`;
+  const description = skeleton.description;
 
   return {
-    title: `${skeleton.name} - ${skeleton.title}`,
-    description: skeleton.description,
+    title,
+    description,
     metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_URL}`),
     alternates: {
       languages: {
         'pt-BR': '/pt-BR',
         'en-US': '/en-US',
       },
+    },
+    twitter: {
+      card: 'summary',
+      images,
+    },
+    openGraph: {
+      type: 'website',
+      title,
+      images,
+      locale: lang,
+      description,
+      siteName: skeleton.name,
     },
   };
 }
