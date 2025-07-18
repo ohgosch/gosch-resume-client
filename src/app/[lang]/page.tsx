@@ -32,7 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  return getStaticParams();
+  return getStaticParams().map((params) => ({
+    ...params,
+    lang: params.locale,
+  }));
 }
 
 interface Props {
