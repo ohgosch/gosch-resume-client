@@ -1,7 +1,8 @@
 import { match } from '@formatjs/intl-localematcher';
-import { i18n, type TLang } from '@/locales/i18n.config';
 import { type NextRequest } from 'next/server';
 import { createI18nMiddleware } from 'next-international/middleware';
+
+import { i18n, type TLang } from '@/locales/i18n.config';
 
 function resolveLocaleFromRequest(request: NextRequest): TLang {
   const acceptLanguages = String(request.headers.get('accept-language')).split(

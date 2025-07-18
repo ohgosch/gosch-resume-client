@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import { enUS, ptBR } from 'date-fns/locale';
+
 import { TLang } from '@/locales/i18n.config';
 
 export const formatPhone = (phone: string): string => {

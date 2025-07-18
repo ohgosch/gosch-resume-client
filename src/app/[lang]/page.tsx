@@ -1,6 +1,9 @@
-import { Header } from '@/components/Header';
-import { TLang } from '@/locales/i18n.config';
+import { Metadata } from 'next';
 import { setStaticParamsLocale } from 'next-international/server';
+
+import { Header } from '@/components/Header';
+import { RichText } from '@/components/RichText';
+import { TLang } from '@/locales/i18n.config';
 import { getI18n, getStaticParams } from '@/locales/server';
 import {
   getCourses,
@@ -10,8 +13,6 @@ import {
   getSkillsSection,
 } from '@/services/resume.service';
 import { formatDate, formatPhone } from '@/utils/format';
-import { RichText } from '@/components/RichText';
-import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;

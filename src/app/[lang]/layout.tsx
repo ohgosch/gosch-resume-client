@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import { TLang } from '@/locales/i18n.config';
+
+import type { Metadata } from 'next';
 import React, { PropsWithChildren } from 'react';
+
 import { I18nProviderClient } from '@/locales/client';
+import { TLang } from '@/locales/i18n.config';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

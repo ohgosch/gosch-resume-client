@@ -1,6 +1,5 @@
 import 'server-only';
 
-import { TLang } from '@/locales/i18n.config';
 import { IApiResponse, IPaginateApiResponse } from '@/interfaces/api';
 import {
   ICourse,
@@ -9,6 +8,7 @@ import {
   ISkeleton,
   ISkillSectionResponse,
 } from '@/interfaces/resume';
+import { TLang } from '@/locales/i18n.config';
 
 const config: RequestInit = {
   headers: {
