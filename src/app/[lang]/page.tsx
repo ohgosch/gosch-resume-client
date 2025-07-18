@@ -46,22 +46,27 @@ const config: RequestInit = {
 };
 
 export default async function Page(props: Props) {
+  console.log('NUMERO 1');
   const params = await props.params;
   /*
    * Store's
    * */
+  console.log('NUMERO 2');
   const { lang } = params;
   setStaticParamsLocale(lang);
+  console.log('NUMERO 3');
   const t = await getI18n();
 
   /*
    * Request's
    * */
+  console.log('NUMERO 4');
   const skeletonResponse = await fetch(
     `${process.env.API_HOST}/api/skeleton?locale=${lang}`,
     config,
   );
 
+  console.log('skeletonResponse', JSON.stringify(skeletonResponse));
   console.log('process.env.API_HOST', `${process.env.API_HOST}`);
   console.log(
     'REQUEST URL',
@@ -69,7 +74,9 @@ export default async function Page(props: Props) {
   );
   console.log('JSON.stringify(config)', JSON.stringify(config));
 
+  console.log('NUMERO 5');
   const skeleton = await skeletonResponse.json();
+  console.log('NUMERO 6');
 
   // const [skeleton, coverLetter, courses, experiences, skills] =
   //   await Promise.all([
