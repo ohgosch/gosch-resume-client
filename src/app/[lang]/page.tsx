@@ -54,6 +54,8 @@ export default async function Page(props: Props) {
   setStaticParamsLocale(lang);
   const t = await getI18n();
 
+  console.log(JSON.stringify(config));
+
   /*
    * Request's
    * */
