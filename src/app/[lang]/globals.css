@@ -20,4 +20,8 @@
   .rich-container ul {
     @apply list-disc list-inside;
   }
+
+  .menu-item {
+    @apply border-neutral-800 odd:border-r-2 md:not-last:border-r-2 md:flex-auto flex-1/2 md:text-center md:first:text-left md:last:text-right max-md:even:text-right;
+  }
 }
