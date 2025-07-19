@@ -119,6 +119,7 @@ export default async function Page(props: Props) {
       </ul>
       <main className="flex flex-col gap-8">
         <section className="rich-container text-justify">
+          <h2 className="sr-only">{t('overview')}</h2>
           <RichText content={coverLetter.data.coverLetterContent} />
         </section>
         <section className="section">
@@ -148,11 +149,11 @@ export default async function Page(props: Props) {
                     </span>
                   </div>
                 </header>
-                <main className="rich-container">
+                <div className="rich-container">
                   {!!experience.description_rich && (
                     <RichText content={experience.description_rich} />
                   )}
-                </main>
+                </div>
               </article>
             ))}
 
