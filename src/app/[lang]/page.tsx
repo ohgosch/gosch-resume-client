@@ -89,20 +89,18 @@ export default async function Page(props: Props) {
   return (
     <div className="w-11/12 max-w-4xl m-auto py-8 flex flex-col gap-8">
       <Header data={skeleton.data} />
-      <ul className="flex justify-between text-base">
-        <li>
+      <ul className="flex justify-between flex-wrap text-base">
+        <li className="menu-item">
           <a target="_blank" href={`mailto:${skeleton.data.email}`}>
             {skeleton.data.email}
           </a>
         </li>
-        <div className="w-0.5 bg-neutral-800 block" />
-        <li>
+        <li className="menu-item">
           <a target="_blank" href={`tel:${skeleton?.data.phone}`}>
             {phoneMasked}
           </a>
         </li>
-        <div className="w-0.5 bg-neutral-800 block" />
-        <li>
+        <li className="menu-item">
           <a
             target="_blank"
             href={`https://www.linkedin.com/in/${skeleton.data.linkedin}`}
@@ -110,8 +108,7 @@ export default async function Page(props: Props) {
             linkedin.com/in/{skeleton.data.linkedin}
           </a>
         </li>
-        <div className="w-0.5 bg-neutral-800 block" />
-        <li>
+        <li className="menu-item">
           <a
             target="_blank"
             href={`https://github.com/${skeleton.data.github}`}
@@ -129,7 +126,7 @@ export default async function Page(props: Props) {
           <div className="grid gap-4">
             {experiences.data.map((experience) => (
               <article className="grid gap-3" key={experience.documentId}>
-                <header className="flex justify-between">
+                <header className="grid md:flex md:justify-between">
                   <div className="grid">
                     <h3 className="text-lg font-bold">
                       {experience.role}
@@ -142,11 +139,11 @@ export default async function Page(props: Props) {
                     </span>
                   </div>
                   <div className="grid">
-                    <span className="text-right whitespace-nowrap lowercase">
+                    <span className="md:text-right whitespace-nowrap lowercase max-md:order-2">
                       {formatDate(experience.startDate, lang)} -{' '}
                       {formatDate(experience.endDate, lang) ?? t('current')}
                     </span>
-                    <span className="text-right whitespace-nowrap text-xs text-neutral-500 lowercase">
+                    <span className="md:text-right whitespace-nowrap text-xs text-neutral-500 lowercase">
                       {t(`modality.${experience.modality}`)}, brazil
                     </span>
                   </div>
