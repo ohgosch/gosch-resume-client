@@ -25,3 +25,14 @@
     @apply border-neutral-800 odd:border-r-2 md:not-last:border-r-2 md:flex-auto flex-1/2 md:text-center md:first:text-left md:last:text-right max-md:even:text-right;
   }
 }
+
+@media print {
+  @page {
+    margin: 0;
+    size: A4 portrait;
+  }
+
+  @theme {
+    --breakpoint-md: 46rem;
+  }
+}
