@@ -14,7 +14,7 @@
   }
 
   .rich-container {
-    @apply text-base;
+    @apply text-base space-y-4;
   }
 
   .rich-container ul {

@@ -2,6 +2,7 @@ import 'server-only';
 
 import { IApiResponse, IPaginateApiResponse } from '@/interfaces/api';
 import {
+  ICompanyCoverLetter,
   ICourse,
   ICoverLetter,
   IExperience,
@@ -33,6 +34,28 @@ export const getCoverLetter = async (
 ): Promise<IApiResponse<ICoverLetter>> => {
   const response = await fetch(
     `${process.env.API_HOST}/api/cover-letter?locale=${locale}`,
+    config,
+  );
+
+  return await response.json();
+};
+
+export const getCompanyCoverLetterList = async (): Promise<
+  IPaginateApiResponse<ICompanyCoverLetter[]>
+> => {
+  const response = await fetch(
+    `${process.env.API_HOST}/api/company-cover-letters`,
+    config,
+  );
+
+  return await response.json();
+};
+
+export const getCompanyCoverLetterItem = async (
+  documentId: string,
+): Promise<IApiResponse<ICompanyCoverLetter>> => {
+  const response = await fetch(
+    `${process.env.API_HOST}/api/company-cover-letters/${documentId}`,
     config,
   );
 
