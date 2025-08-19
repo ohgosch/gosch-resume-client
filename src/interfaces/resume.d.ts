@@ -71,6 +71,15 @@ export interface ICoverLetter {
   locale: string;
 }
 
+export interface ICompanyCoverLetter {
+  documentId: string;
+  company: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
 export interface ISkillCategory {
   documentId: string;
   name: string;
