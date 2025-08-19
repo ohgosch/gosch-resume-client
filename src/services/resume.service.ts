@@ -16,6 +16,7 @@ const config: RequestInit = {
     'Content-Type': 'application/json',
     authorization: `Bearer ${process.env.API_TOKEN}`,
   },
+  signal: AbortSignal.timeout(300000),
 };
 
 export const getSkeleton = async (
