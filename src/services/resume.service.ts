@@ -76,9 +76,10 @@ export const getCourses = async (
 
 export const getExperiences = async (
   locale: TLang,
+  limit: number,
 ): Promise<IPaginateApiResponse<IExperience[]>> => {
   const response = await fetch(
-    `${process.env.API_HOST}/api/experiences?locale=${locale}&pagination[pageSize]=4&populate[1]=skills&sort=startDate:DESC`,
+    `${process.env.API_HOST}/api/experiences?locale=${locale}&pagination[pageSize]=${limit}&populate[1]=skills&sort=startDate:DESC`,
     config,
   );
 

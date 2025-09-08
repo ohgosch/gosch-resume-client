@@ -14,6 +14,7 @@ export interface ISkeleton {
   github: string;
   phone: string;
   languages: BlocksContent;
+  experiences_limit: number;
 }
 
 export interface IExperience {
@@ -48,6 +49,7 @@ export interface IExperience {
     updatedAt: string;
   };
   skills: Omit<ISkill, 'skill_category'>[];
+  based_in: string | null;
 }
 
 export interface ICourse {
