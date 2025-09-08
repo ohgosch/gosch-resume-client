@@ -1,7 +1,7 @@
 export default {
   modality: {
     remote: 'Remote',
-    'partial-remote': 'Remote',
+    'partial-remote': 'Hybrid',
     'on-site': 'On-site',
   },
   current: 'Current',
