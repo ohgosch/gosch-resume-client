@@ -70,14 +70,14 @@ export default async function Page(props: Props) {
   /*
    * Request's
    * */
-  const [skeleton, coverLetter, courses, experiences, skills] =
-    await Promise.all([
-      getSkeleton(lang),
-      getCoverLetter(lang),
-      getCourses(lang),
-      getExperiences(lang),
-      getSkillsSection(lang),
-    ]);
+  const skeleton = await getSkeleton(lang);
+
+  const [coverLetter, courses, experiences, skills] = await Promise.all([
+    getCoverLetter(lang),
+    getCourses(lang),
+    getExperiences(lang, skeleton.data.experiences_limit),
+    getSkillsSection(lang),
+  ]);
 
   /*
    * Variable's
@@ -145,7 +145,8 @@ export default async function Page(props: Props) {
                       {formatDate(experience.endDate, lang) ?? t('current')}
                     </span>
                     <span className="md:text-right whitespace-nowrap text-xs text-neutral-500 lowercase">
-                      {t(`modality.${experience.modality}`)}, brazil
+                      {t(`modality.${experience.modality}`)}
+                      {!!experience.based_in && `, ${experience.based_in}`}
                     </span>
                   </div>
                 </header>
