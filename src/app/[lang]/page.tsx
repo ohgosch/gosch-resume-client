@@ -3,7 +3,6 @@ import { setStaticParamsLocale } from 'next-international/server';
 
 import { Header } from '@/components/Header';
 import { RichText } from '@/components/RichText';
-import { TLang } from '@/locales/i18n.config';
 import { getI18n, getStaticParams } from '@/locales/server';
 import {
   getCourses,
@@ -14,7 +13,9 @@ import {
 } from '@/services/resume.service';
 import { formatDate, formatPhone } from '@/utils/format';
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<'/[lang]'>): Promise<Metadata> {
   const { lang } = await params;
 
   const skeleton = (await getSkeleton(lang)).data;
@@ -54,11 +55,7 @@ export function generateStaticParams() {
   }));
 }
 
-interface Props {
-  params: Promise<{ lang: TLang }>;
-}
-
-export default async function Page(props: Props) {
+export default async function Page(props: PageProps<'/[lang]'>) {
   const params = await props.params;
   /*
    * Store's
