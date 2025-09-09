@@ -9,7 +9,6 @@ import {
   ISkeleton,
   ISkillSectionResponse,
 } from '@/interfaces/resume';
-import { TLang } from '@/locales/i18n.config';
 
 const config: RequestInit = {
   headers: {
@@ -20,7 +19,7 @@ const config: RequestInit = {
 };
 
 export const getSkeleton = async (
-  locale: TLang,
+  locale: string,
 ): Promise<IApiResponse<ISkeleton>> => {
   const response = await fetch(
     `${process.env.API_HOST}/api/skeleton?locale=${locale}`,
@@ -31,7 +30,7 @@ export const getSkeleton = async (
 };
 
 export const getCoverLetter = async (
-  locale: TLang,
+  locale: string,
 ): Promise<IApiResponse<ICoverLetter>> => {
   const response = await fetch(
     `${process.env.API_HOST}/api/cover-letter?locale=${locale}`,
@@ -64,7 +63,7 @@ export const getCompanyCoverLetterItem = async (
 };
 
 export const getCourses = async (
-  locale: TLang,
+  locale: string,
 ): Promise<IPaginateApiResponse<ICourse[]>> => {
   const response = await fetch(
     `${process.env.API_HOST}/api/courses?locale=${locale}&sort=startDate:DESC`,
@@ -75,7 +74,7 @@ export const getCourses = async (
 };
 
 export const getExperiences = async (
-  locale: TLang,
+  locale: string,
   limit: number,
 ): Promise<IPaginateApiResponse<IExperience[]>> => {
   const response = await fetch(
@@ -87,7 +86,7 @@ export const getExperiences = async (
 };
 
 export const getSkillsSection = async (
-  locale: TLang,
+  locale: string,
 ): Promise<IApiResponse<ISkillSectionResponse>> => {
   const response = await fetch(
     `${process.env.API_HOST}/api/skills-section?locale=${locale}&populate[skills][populate][0]=skill_category&populate=skill_categories`,

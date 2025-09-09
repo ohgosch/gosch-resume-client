@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import { setStaticParamsLocale } from 'next-international/server';
 
 import { Header } from '@/components/Header';
-import { TLang } from '@/locales/i18n.config';
 import { getI18n, getStaticParams } from '@/locales/server';
 import {
   getCompanyCoverLetterItem,
@@ -11,7 +10,9 @@ import {
 } from '@/services/resume.service';
 import { formatPhone } from '@/utils/format';
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<'/[lang]/cover-letter/[documentId]'>): Promise<Metadata> {
   const { lang, documentId } = await params;
 
   const [skeleton, coverLetter] = await Promise.all([
@@ -62,11 +63,9 @@ export async function generateStaticParams() {
   return params;
 }
 
-interface Props {
-  params: Promise<{ lang: TLang; documentId: string }>;
-}
-
-export default async function Page(props: Props) {
+export default async function Page(
+  props: PageProps<'/[lang]/cover-letter/[documentId]'>,
+) {
   const params = await props.params;
   /*
    * Store's

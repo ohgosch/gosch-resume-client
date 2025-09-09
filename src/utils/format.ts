@@ -1,8 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import { enUS, ptBR } from 'date-fns/locale';
 
-import { TLang } from '@/locales/i18n.config';
-
 export const formatPhone = (phone: string): string => {
   const regex = /(\d{2})(\d{3})(\d{5})(\d{4})/;
 
@@ -11,7 +9,7 @@ export const formatPhone = (phone: string): string => {
   return `+${DDI} ${DDD} ${P1}-${P2}`;
 };
 
-export const getDateLocale = (lang: TLang) => {
+export const getDateLocale = (lang: string) => {
   switch (lang) {
     case 'pt-BR':
       return ptBR;
@@ -21,7 +19,7 @@ export const getDateLocale = (lang: TLang) => {
   }
 };
 
-export const formatDate = (date: string, lang: TLang) => {
+export const formatDate = (date: string, lang: string) => {
   if (!date) return date;
 
   return format(parseISO(date), 'MMMM yyyy', { locale: getDateLocale(lang) });
