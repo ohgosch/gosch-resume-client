@@ -1,14 +1,17 @@
 import { FlatCompat } from '@eslint/eslintrc';
-// @ts-check
 import eslint from '@eslint/js';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-export default defineConfig(
+export default defineConfig([
+  ...nextVitals,
+  ...nextTs,
   eslint.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   {
@@ -19,31 +22,7 @@ export default defineConfig(
       },
     },
   },
-  {
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-  },
-  {
-    ignores: [
-      'node_modules/**',
-      '.next/**',
-      'out/**',
-      'build/**',
-      'next-env.d.ts',
-      'eslint.config.mjs',
-      '.lintstagedrc.js',
-      'postcss.config.mjs',
-    ],
-  },
-  compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'prettier',
-    'plugin:prettier/recommended',
-  ),
+  compat.extends('prettier', 'plugin:prettier/recommended'),
   compat.config({
     plugins: ['simple-import-sort', 'import'],
     rules: {
@@ -60,4 +39,14 @@ export default defineConfig(
       'import/no-duplicates': 'error',
     },
   }),
-);
+  globalIgnores([
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+    'node_modules/**',
+    'eslint.config.mjs',
+    '.lintstagedrc.js',
+    'postcss.config.mjs',
+  ]),
+]);
