@@ -4,7 +4,6 @@ import { IApiResponse, IPaginateApiResponse } from '@/interfaces/api';
 import {
   ICompanyCoverLetter,
   ICourse,
-  ICoverLetter,
   IExperience,
   ISkeleton,
   ISkillSectionResponse,
@@ -27,15 +26,6 @@ export const getSkeleton = async (
   );
 
   return (await response.json()) as IApiResponse<ISkeleton>;
-};
-
-export const getCoverLetter = async (locale: string) => {
-  const response = await fetch(
-    `${process.env.API_HOST}/api/cover-letter?locale=${locale}`,
-    config,
-  );
-
-  return (await response.json()) as IApiResponse<ICoverLetter>;
 };
 
 export const getCompanyCoverLetterList = async () => {

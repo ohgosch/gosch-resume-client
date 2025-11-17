@@ -15,6 +15,7 @@ export interface ISkeleton {
   phone: string;
   languages: BlocksContent;
   experiences_limit: number;
+  about?: string;
 }
 
 export interface IExperience {
@@ -58,15 +59,6 @@ export interface ICourse {
   startDate: string;
   endDate: string;
   description: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  locale: string;
-}
-
-export interface ICoverLetter {
-  documentId: string;
-  coverLetterContent: BlocksContent;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

@@ -6,12 +6,12 @@ import { RichText } from '@/components/RichText';
 import { getI18n, getStaticParams } from '@/locales/server';
 import {
   getCourses,
-  getCoverLetter,
   getExperiences,
   getSkeleton,
   getSkillsSection,
 } from '@/services/resume.service';
 import { formatDate, formatPhone } from '@/utils/format';
+import { generateSEOMetadata } from '@/utils/seo';
 
 export async function generateMetadata({
   params,
@@ -19,33 +19,13 @@ export async function generateMetadata({
   const { lang } = await params;
 
   const skeleton = (await getSkeleton(lang)).data;
-  const title = `${skeleton.name} - ${skeleton.title}`;
-  const images = `/img/seo/card_${lang}.png`;
-  const description = skeleton.description;
 
-  return {
-    title,
-    description,
-    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_URL}`),
-    alternates: {
-      languages: {
-        'pt-BR': '/pt-BR',
-        'en-US': '/en-US',
-      },
-    },
-    twitter: {
-      card: 'summary',
-      images,
-    },
-    openGraph: {
-      type: 'website',
-      title,
-      images,
-      locale: lang,
-      description,
-      siteName: skeleton.name,
-    },
-  };
+  return generateSEOMetadata({
+    title: `${skeleton.name} - ${skeleton.title}`,
+    description: skeleton.description,
+    siteName: skeleton.name,
+    lang,
+  });
 }
 
 export function generateStaticParams() {
@@ -69,8 +49,7 @@ export default async function Page(props: PageProps<'/[lang]'>) {
    * */
   const skeleton = await getSkeleton(lang);
 
-  const [coverLetter, courses, experiences, skills] = await Promise.all([
-    getCoverLetter(lang),
+  const [courses, experiences, skills] = await Promise.all([
     getCourses(lang),
     getExperiences(lang, skeleton.data.experiences_limit),
     getSkillsSection(lang),
@@ -117,7 +96,12 @@ export default async function Page(props: PageProps<'/[lang]'>) {
       <main className="flex flex-col gap-8">
         <section className="rich-container text-justify">
           <h2 className="sr-only">{t('overview')}</h2>
-          <RichText content={coverLetter.data.coverLetterContent} />
+          {!!skeleton.data?.about && (
+            <div
+              className="rich-container text-justify"
+              dangerouslySetInnerHTML={{ __html: skeleton.data.about }}
+            ></div>
+          )}
         </section>
         <section className="section">
           <h2 className="section-title">{t('experiences')}</h2>
