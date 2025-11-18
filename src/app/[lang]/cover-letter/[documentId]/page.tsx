@@ -9,6 +9,7 @@ import {
   getSkeleton,
 } from '@/services/resume.service';
 import { formatPhone } from '@/utils/format';
+import { generateSEOMetadata } from '@/utils/seo';
 
 export async function generateMetadata({
   params,
@@ -19,33 +20,13 @@ export async function generateMetadata({
     getSkeleton(lang),
     getCompanyCoverLetterItem(documentId),
   ]);
-  const title = `${skeleton.data.name} - ${skeleton.data.title} - ${coverLetter.data.company}`;
-  const images = `/img/seo/card_${lang}.png`;
-  const description = skeleton.data.description;
 
-  return {
-    title,
-    description,
-    metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_URL}`),
-    alternates: {
-      languages: {
-        'pt-BR': '/pt-BR',
-        'en-US': '/en-US',
-      },
-    },
-    twitter: {
-      card: 'summary',
-      images,
-    },
-    openGraph: {
-      type: 'website',
-      title,
-      images,
-      locale: lang,
-      description,
-      siteName: skeleton.data.name,
-    },
-  };
+  return generateSEOMetadata({
+    title: `${skeleton.data.name} - ${skeleton.data.title} - ${coverLetter.data.company}`,
+    description: skeleton.data.description,
+    siteName: skeleton.data.name,
+    lang,
+  });
 }
 
 export async function generateStaticParams() {
