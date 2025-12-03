@@ -1,7 +1,25 @@
 {
   "name": "gosch-resume-client",
   "version": "3.0.0",
+  "description": "A modern, multi-language resume application built with Next.js 16, featuring server-side rendering, internationalization with next-international, and a headless CMS integration",
+  "author": "Ricardo Gosch",
+  "license": "MIT",
   "private": true,
+  "keywords": [
+    "nextjs",
+    "resume",
+    "portfolio",
+    "i18n",
+    "next-international",
+    "typescript",
+    "tailwindcss",
+    "strapi",
+    "react"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
